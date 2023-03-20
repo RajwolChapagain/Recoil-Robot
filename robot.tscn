@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj3kyym6bhups"]
+
+[ext_resource type="Texture2D" uid="uid://c1wx1rdkynrkp" path="res://icon.svg" id="1_v47im"]
+[ext_resource type="Script" path="res://robot.gd" id="1_w64wk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71nt1"]
+size = Vector2(128, 128)
+
+[node name="Robot" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_w64wk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v47im")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_71nt1")

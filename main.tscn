@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj68p0p7jluh7"]
+
+[ext_resource type="PackedScene" uid="uid://bj3kyym6bhups" path="res://robot.tscn" id="1_r53qa"]
+[ext_resource type="PackedScene" uid="uid://4b56efx0epmd" path="res://world.tscn" id="2_qt0y4"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Robot" parent="." instance=ExtResource("1_r53qa")]
+position = Vector2(412, 126)
+
+[node name="World" parent="." instance=ExtResource("2_qt0y4")]
+position = Vector2(573, 499)
