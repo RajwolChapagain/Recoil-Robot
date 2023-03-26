@@ -9,3 +9,8 @@ script = ExtResource("2_y3tyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_d54yg")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

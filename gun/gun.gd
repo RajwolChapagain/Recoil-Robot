@@ -7,17 +7,24 @@ var recoil_force = 500
 var bullets_per_shot = 3
 var max_bullet_spread_angle = 30
 var angle_between_bullets
+var fire_rate = 2
+var is_reloading = false
 
 func _ready():
 	gun_sprite_offset_x = $Sprite2D.position.x
 	angle_between_bullets = max_bullet_spread_angle / bullets_per_shot
+	$ReloadTimer.wait_time = 1.0 / fire_rate
 
 func fire_bullet():
-	for i in range(bullets_per_shot):
-		var bullet = BULLET_SCENE.instantiate()
-		call_deferred("add_sibling_and_set_direction", bullet, i)
+	if not is_reloading:
+		is_reloading = true
+		print("Reloading...")
+		$ReloadTimer.start()
+		for i in range(bullets_per_shot):
+			var bullet = BULLET_SCENE.instantiate()
+			call_deferred("add_sibling_and_set_direction", bullet, i)
 
-	give_parent_recoil()
+		give_parent_recoil()
 
 func add_sibling_and_set_direction(bullet, bullet_index):
 	add_sibling(bullet)
@@ -38,3 +45,8 @@ func add_sibling_and_set_direction(bullet, bullet_index):
 	
 func give_parent_recoil():
 	get_parent().apply_impulse(-position.normalized() * recoil_force)
+
+
+func _on_reload_timer_timeout():
+	print("Shot ready!")
+	is_reloading = false
