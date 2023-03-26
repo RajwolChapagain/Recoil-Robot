@@ -5,7 +5,7 @@ var gun_scaling_factor = scale.x
 var gun_sprite_offset_x
 var recoil_force = 500
 var bullets_per_shot = 3
-var max_bullet_spread_angle = 30
+var max_bullet_spread_angle = 40
 var angle_between_bullets
 var fire_rate = 2
 var is_reloading = false
@@ -18,7 +18,7 @@ func _ready():
 func fire_bullet():
 	if not is_reloading:
 		is_reloading = true
-		print("Reloading...")
+		#print("Reloading...")
 		$ReloadTimer.start()
 		for i in range(bullets_per_shot):
 			var bullet = BULLET_SCENE.instantiate()
@@ -48,5 +48,5 @@ func give_parent_recoil():
 
 
 func _on_reload_timer_timeout():
-	print("Shot ready!")
+	#print("Shot ready!")
 	is_reloading = false

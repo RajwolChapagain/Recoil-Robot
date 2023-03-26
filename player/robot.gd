@@ -6,7 +6,7 @@ var is_grounded = false
 var distance_to_gun
 var increment_angle_per_second_degrees = 100
 var gun_rotation_angle = 0
-var sensitivity = 2
+var sensitivity = 4
 
 func _ready():
 	if $Gun != null:
