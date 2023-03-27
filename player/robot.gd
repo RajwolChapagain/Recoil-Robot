@@ -8,6 +8,10 @@ var increment_angle_per_second_degrees = 100
 var gun_rotation_angle = 0
 var sensitivity = 4
 
+var can_move = true
+var can_jump = true
+var can_shoot = true
+
 func _ready():
 	if $Gun != null:
 		distance_to_gun = $Gun.position.length()
@@ -17,19 +21,23 @@ func _physics_process(delta):
 		
 func _input(event):
 	if event.is_action_pressed("fire_bullet"):
-		if $Gun != null:
-			$Gun.fire_bullet()
+		if can_shoot:
+			if $Gun != null:
+				$Gun.fire_bullet()
 	
 func _integrate_forces(state):
 	if Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
-		linear_velocity.x = - MOVE_SPEED
+		if can_move:
+			linear_velocity.x = - MOVE_SPEED
 
 	if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
-		linear_velocity.x = MOVE_SPEED
+		if can_move:
+			linear_velocity.x = MOVE_SPEED
 	
 	if Input.is_action_just_pressed("jump"):
-		if is_grounded:
-			linear_velocity.y = -JUMP_SPEED
+		if can_jump:
+			if is_grounded:
+				linear_velocity.y = -JUMP_SPEED
 	
 func _on_body_entered(body):
 	if "platform" in body.get_groups():

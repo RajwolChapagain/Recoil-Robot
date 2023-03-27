@@ -3,9 +3,15 @@ extends RigidBody2D
 var move_speed = 200
 var move_right = false
 var target = self
+var health_points = 40
 
-func on_shot(impulse, direction):
+func on_shot(impulse, direction, damage):
 	apply_central_impulse(impulse * direction)
+	
+	health_points -= damage
+	
+	if health_points <= 0:
+		die()
 
 func _integrate_forces(state):
 	if move_right:
@@ -25,3 +31,5 @@ func move_to_target():
 func set_target(target):
 	self.target = target
 
+func die():
+	queue_free()

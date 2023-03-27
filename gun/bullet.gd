@@ -6,6 +6,7 @@ var max_bullet_distance = 500
 var initial_position
 var min_bullet_impact_force = 1200
 var max_bullet_impact_force = 2000
+var damage = 15
 
 func _ready():
 	initial_position = position
@@ -16,11 +17,9 @@ func _physics_process(delta):
 	if initial_position.distance_to(position) > max_bullet_distance:
 		queue_free()
 		
-
-
 func _on_body_entered(body):
 	if body.is_in_group("shootable"):
-		body.on_shot(get_damage_based_on_distance(), position.normalized())
+		body.on_shot(get_damage_based_on_distance(), position.normalized(), damage)
 		queue_free()
 	
 func get_damage_based_on_distance():
