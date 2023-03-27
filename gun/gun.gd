@@ -1,6 +1,7 @@
 extends Node2D
 
 const BULLET_SCENE = preload("res://gun/bullet.tscn")
+const SHELL_SCENE = preload("res://gun/shell.tscn")
 var gun_scaling_factor = scale.x
 var gun_sprite_offset_x
 var recoil_force = 500
@@ -49,4 +50,24 @@ func give_parent_recoil():
 
 func _on_reload_timer_timeout():
 	#print("Shot ready!")
+	instantiate_shells(bullets_per_shot)
 	is_reloading = false
+
+func instantiate_shells(number_of_shells):
+	var max_shell_offset_angle = 45
+	
+	for i in range(number_of_shells):
+		var shell = SHELL_SCENE.instantiate()
+		get_tree().get_root().add_child(shell)
+		shell.position = global_position
+		
+		var shell_direction
+		
+		if position.x > 0:
+			shell_direction = position.orthogonal().normalized()
+		else:
+			shell_direction = -position.orthogonal().normalized()
+			
+		var random_angle_offset = randi_range(-max_shell_offset_angle / 2, max_shell_offset_angle / 2)		
+		shell_direction = shell_direction.rotated(deg_to_rad(random_angle_offset))
+		shell.apply_impulse_in_direction(shell_direction)

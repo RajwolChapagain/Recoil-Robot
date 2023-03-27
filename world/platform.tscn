@@ -6,6 +6,7 @@
 size = Vector2(1038, 138)
 
 [node name="Platform" type="StaticBody2D" groups=["platform"]]
+collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tqlar")
