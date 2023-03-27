@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var initial_impulse = 600
+var initial_impulse = 500
 	
 func _physics_process(delta):
 	$Sprite2D.modulate.a = $DestroyTimer.time_left / 2

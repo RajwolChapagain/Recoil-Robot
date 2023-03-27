@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg2o6oownovfq"]
+[gd_scene load_steps=6 format=3 uid="uid://dg2o6oownovfq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a1s6m"]
 [ext_resource type="PackedScene" uid="uid://brwr5mybbwdat" path="res://player/robot.tscn" id="1_r53qa"]
 [ext_resource type="PackedScene" uid="uid://mnoschwm5g3x" path="res://gun/gun.tscn" id="2_8n84b"]
 [ext_resource type="PackedScene" uid="uid://4b56efx0epmd" path="res://world/world.tscn" id="2_qt0y4"]
+[ext_resource type="PackedScene" uid="uid://fod77exl070e" path="res://enemy/enemy.tscn" id="5_5kg8v"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a1s6m")
@@ -16,3 +17,6 @@ position = Vector2(378, 134)
 
 [node name="Gun" parent="Robot" instance=ExtResource("2_8n84b")]
 position = Vector2(141, 0)
+
+[node name="enemy" parent="." instance=ExtResource("5_5kg8v")]
+position = Vector2(820, 297)

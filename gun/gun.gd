@@ -30,7 +30,6 @@ func fire_bullet():
 func add_sibling_and_set_direction(bullet, bullet_index):
 	add_sibling(bullet)
 	
-	
 	bullet.direction = position.normalized()
 	
 	if bullet_index == 0:
@@ -55,9 +54,11 @@ func _on_reload_timer_timeout():
 
 func instantiate_shell():
 	var max_shell_offset_angle = 45
+
 	var shell = SHELL_SCENE.instantiate()
 	get_tree().get_root().add_child(shell)
 	shell.position = global_position
+	
 	var shell_direction
 	
 	if position.x > 0:
