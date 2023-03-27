@@ -4,8 +4,8 @@ var direction = Vector2.ZERO
 const BULLET_SPEED = 50
 var max_bullet_distance = 500
 var initial_position
-var min_bullet_impact_force = 100
-var max_bullet_impact_force = 300
+var min_bullet_impact_force = 1200
+var max_bullet_impact_force = 2000
 
 func _ready():
 	initial_position = position

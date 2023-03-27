@@ -7,6 +7,7 @@
 size = Vector2(112, 112)
 
 [node name="Enemy" type="RigidBody2D" groups=["shootable"]]
+lock_rotation = true
 script = ExtResource("1_bgosg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
