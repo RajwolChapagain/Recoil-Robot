@@ -28,8 +28,8 @@ func move_to_target():
 	else:
 		move_right = false
 
-func set_target(target):
-	self.target = target
+func set_target(new_target):
+	target = new_target
 
 func die():
 	queue_free()
