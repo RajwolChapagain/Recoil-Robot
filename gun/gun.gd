@@ -13,7 +13,7 @@ var is_reloading = false
 
 func _ready():
 	gun_sprite_offset_x = $Sprite2D.position.x
-	angle_between_bullets = float(max_bullet_spread_angle) / bullets_per_shot
+	angle_between_bullets = max_bullet_spread_angle / bullets_per_shot
 	$ReloadTimer.wait_time = 1.0 / fire_rate
 
 func fire_bullet():
@@ -66,6 +66,6 @@ func instantiate_shell():
 	else:
 		shell_direction = -position.orthogonal().normalized()
 		
-	var random_angle_offset = randi_range(-float(max_shell_offset_angle) / 2, float(max_shell_offset_angle) / 2)		
+	var random_angle_offset = randi_range(-max_shell_offset_angle / 2, max_shell_offset_angle / 2)
 	shell_direction = shell_direction.rotated(deg_to_rad(random_angle_offset))
 	shell.apply_impulse_in_direction(shell_direction)
