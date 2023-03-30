@@ -33,3 +33,18 @@ func set_target(new_target):
 
 func die():
 	queue_free()
+
+
+func _on_body_entered(body):
+	if body.name == "Robot":
+		on_robot_touched(body)
+		
+func on_robot_touched(robot):
+	if robot.can_jump:
+		robot.can_jump = false
+	elif robot.can_move:
+		robot.can_move = false
+	else:
+		robot.can_shoot = false
+	
+	die()

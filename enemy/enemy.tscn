@@ -7,6 +7,9 @@
 size = Vector2(112, 112)
 
 [node name="Enemy" type="RigidBody2D" groups=["shootable"]]
+max_contacts_reported = 2
+contact_monitor = true
+can_sleep = false
 lock_rotation = true
 script = ExtResource("1_bgosg")
 
@@ -16,3 +19,5 @@ texture = ExtResource("1_7wb8p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gmitk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
