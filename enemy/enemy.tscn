@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmitk"]
 size = Vector2(112, 112)
 
-[node name="Enemy" type="RigidBody2D" groups=["shootable"]]
+[node name="Enemy" type="RigidBody2D" groups=["enemy", "shootable"]]
 max_contacts_reported = 2
 contact_monitor = true
 can_sleep = false

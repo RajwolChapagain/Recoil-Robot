@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://brwr5mybbwdat" path="res://player/robot.tscn" id="1_r53qa"]
 [ext_resource type="PackedScene" uid="uid://mnoschwm5g3x" path="res://gun/gun.tscn" id="2_8n84b"]
 [ext_resource type="PackedScene" uid="uid://4b56efx0epmd" path="res://world/world.tscn" id="2_qt0y4"]
-[ext_resource type="PackedScene" uid="uid://fod77exl070e" path="res://enemy/enemy.tscn" id="5_5kg8v"]
+[ext_resource type="PackedScene" uid="uid://btbwk8f0x8wn3" path="res://enemy/enemy_spawner.tscn" id="6_i7ihu"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a1s6m")
@@ -17,5 +17,4 @@ position = Vector2(708, 691)
 [node name="Gun" parent="Robot" instance=ExtResource("2_8n84b")]
 position = Vector2(141, 0)
 
-[node name="enemy" parent="." instance=ExtResource("5_5kg8v")]
-position = Vector2(1303, 739)
+[node name="EnemySpawner" parent="." instance=ExtResource("6_i7ihu")]

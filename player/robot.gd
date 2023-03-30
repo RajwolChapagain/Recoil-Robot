@@ -19,6 +19,9 @@ func _ready():
 func _physics_process(delta):
 		handle_gun_rotation(delta)
 		
+		if global_position.y > get_viewport_rect().size.y:
+			print("player has fallen")
+			
 func _input(event):
 	if event.is_action_pressed("fire_bullet"):
 		if can_shoot:
