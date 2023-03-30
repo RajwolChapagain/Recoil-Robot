@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const MOVE_SPEED = 400
-const JUMP_SPEED = 700
+const JUMP_SPEED = 800
 var is_grounded = false
 var distance_to_gun
 var increment_angle_per_second_degrees = 100
