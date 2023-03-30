@@ -10,13 +10,12 @@
 script = ExtResource("1_a1s6m")
 
 [node name="World" parent="." instance=ExtResource("2_qt0y4")]
-position = Vector2(607, 505)
 
 [node name="Robot" parent="." instance=ExtResource("1_r53qa")]
-position = Vector2(378, 134)
+position = Vector2(708, 691)
 
 [node name="Gun" parent="Robot" instance=ExtResource("2_8n84b")]
 position = Vector2(141, 0)
 
 [node name="enemy" parent="." instance=ExtResource("5_5kg8v")]
-position = Vector2(820, 297)
+position = Vector2(1303, 739)

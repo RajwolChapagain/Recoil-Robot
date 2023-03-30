@@ -1,7 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://4b56efx0epmd"]
+[gd_scene load_steps=4 format=3 uid="uid://4b56efx0epmd"]
 
-[ext_resource type="PackedScene" uid="uid://cw4wqb5mg1tem" path="res://world/platform.tscn" id="1_4vubt"]
+[ext_resource type="Texture2D" uid="uid://c3wx0qq3ktesc" path="res://world/tileset.png" id="1_kntc8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xjwpi"]
+resource_name = "terrain"
+texture = ExtResource("1_kntc8")
+texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_twuvj"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 3
+sources/0 = SubResource("TileSetAtlasSource_xjwpi")
 
 [node name="World" type="Node2D"]
 
-[node name="Platform" parent="." instance=ExtResource("1_4vubt")]
+[node name="TileMap" type="TileMap" parent="." groups=["platform"]]
+tile_set = SubResource("TileSet_twuvj")
+format = 2
+layer_0/tile_data = PackedInt32Array(1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048585, 0, 0, 1048596, 0, 0, 1048584, 0, 0, 1048597, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0)
