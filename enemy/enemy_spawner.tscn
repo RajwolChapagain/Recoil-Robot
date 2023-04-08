@@ -9,7 +9,7 @@ script = ExtResource("1_8g5xm")
 autostart = true
 
 [node name="RateIncrementTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 20.0
 autostart = true
 
 [connection signal="timeout" from="SpawnRateTimer" to="." method="_on_spawn_rate_timer_timeout"]

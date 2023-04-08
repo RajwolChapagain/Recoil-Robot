@@ -2,12 +2,14 @@ extends Node2D
 
 const ENEMY_SCENE = preload("res://enemy/enemy.tscn")
 var spawn_rate = 0.2
-var spawn_rate_increment = 0.2
+var spawn_rate_increment = 0.1
 var max_x_coordinate_spawn
 var camera_zoom = 0.8 #get this from the main scene's camera
 var spawn_y_offset = 200
+var rate_increase_interval = 20
 
 func _ready():
+	$RateIncrementTimer.wait_time = rate_increase_interval
 	set_timer_wait_time()
 	max_x_coordinate_spawn = get_viewport_rect().size.x + (1 - camera_zoom) * get_viewport_rect().size.x
 

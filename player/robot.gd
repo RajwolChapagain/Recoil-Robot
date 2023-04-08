@@ -73,6 +73,7 @@ func disable_jump():
 func disable_movement():
 	can_move = false
 	$Gun.fire_rate *= 2
+	$Gun.set_reload_time_using_bullets_per_second($Gun.fire_rate)
 
 func disable_shooting():
 	can_shoot = false
