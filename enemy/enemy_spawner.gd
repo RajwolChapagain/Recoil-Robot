@@ -5,6 +5,7 @@ var spawn_rate = 0.2
 var spawn_rate_increment = 0.2
 var max_x_coordinate_spawn
 var camera_zoom = 0.8 #get this from the main scene's camera
+var spawn_y_offset = 200
 
 func _ready():
 	set_timer_wait_time()
@@ -24,6 +25,6 @@ func _on_rate_increment_timer_timeout():
 
 func pick_random_spawn_position():
 	var x = randi_range(0, max_x_coordinate_spawn)
-	var y = 0
+	var y = 0 - spawn_y_offset
 	
 	return Vector2(x, y)
