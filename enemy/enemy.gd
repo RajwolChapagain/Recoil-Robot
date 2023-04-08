@@ -56,10 +56,10 @@ func _on_body_entered(body):
 		
 func on_robot_touched(robot):
 	if robot.can_jump:
-		robot.can_jump = false
+		robot.disable_jump()
 	elif robot.can_move:
-		robot.can_move = false
+		robot.disable_movement()
 	else:
-		robot.can_shoot = false
+		robot.disable_shooting()
 	
 	die()

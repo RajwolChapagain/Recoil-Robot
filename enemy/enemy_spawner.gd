@@ -4,10 +4,11 @@ const ENEMY_SCENE = preload("res://enemy/enemy.tscn")
 var spawn_rate = 0.2
 var spawn_rate_increment = 0.2
 var max_x_coordinate_spawn
+var camera_zoom = 0.8 #get this from the main scene's camera
 
 func _ready():
 	set_timer_wait_time()
-	max_x_coordinate_spawn = get_viewport_rect().size.x
+	max_x_coordinate_spawn = get_viewport_rect().size.x + (1 - camera_zoom) * get_viewport_rect().size.x
 
 func set_timer_wait_time():
 	$SpawnRateTimer.wait_time = 1 / float(spawn_rate)

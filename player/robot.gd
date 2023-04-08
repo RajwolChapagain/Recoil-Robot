@@ -66,3 +66,13 @@ func handle_gun_rotation(physics_process_delta):
 	
 	$Gun.rotation_degrees = gun_rotation_angle
 	
+func disable_jump():
+	can_jump = false
+	$Gun.recoil_force *= 2
+	
+func disable_movement():
+	can_move = false
+	$Gun.fire_rate *= 2
+
+func disable_shooting():
+	can_shoot = false
