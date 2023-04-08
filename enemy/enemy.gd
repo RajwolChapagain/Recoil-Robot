@@ -10,7 +10,7 @@ func _ready():
 	gravity_scale = 0.4
 	
 func on_shot(impulse, direction, damage):
-	apply_central_impulse(impulse * direction)
+	#apply_central_impulse(impulse * direction)
 	
 	health_points -= damage
 	
