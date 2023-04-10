@@ -5,8 +5,8 @@ const SHELL_SCENE = preload("res://gun/shell.tscn")
 var gun_scaling_factor = scale.x
 var gun_sprite_offset_x
 var recoil_force = 500
-var bullets_per_shot = 3
-var max_bullet_spread_angle = 40
+var bullets_per_shot = 1
+var max_bullet_spread_angle = 0
 var angle_between_bullets
 var fire_rate = 2
 var is_reloading = false
@@ -19,30 +19,17 @@ func _ready():
 func fire_bullet():
 	if not is_reloading:
 		is_reloading = true
-		#print("Reloading...")
 		$ReloadTimer.start()
-		for i in range(bullets_per_shot):
-			var bullet = BULLET_SCENE.instantiate()
-			call_deferred("add_sibling_and_set_direction", bullet, i)
+		var bullet = BULLET_SCENE.instantiate()
+		call_deferred("add_sibling_and_set_direction", bullet)
 
 		give_parent_recoil()
 
-func add_sibling_and_set_direction(bullet, bullet_index):
-	add_sibling(bullet)
-	
+func add_sibling_and_set_direction(bullet):
+	get_tree().get_root().add_child(bullet)
 	bullet.direction = position.normalized()
-	
-	if bullet_index == 0:
-		pass
-	elif bullet_index == 1:
-		bullet.direction = bullet.direction.rotated(deg_to_rad(angle_between_bullets))
-	elif bullet_index == 2:
-		bullet.direction = bullet.direction.rotated(deg_to_rad(-angle_between_bullets))
+	bullet.position = global_position
 		
-	
-	bullet.position = position
-	
-	
 func give_parent_recoil():
 	get_parent().apply_impulse(-position.normalized() * recoil_force)
 
