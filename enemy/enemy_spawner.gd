@@ -25,7 +25,8 @@ func _on_spawn_rate_timer_timeout():
 func _on_rate_increment_timer_timeout():
 	spawn_rate += spawn_rate_increment
 	spawn_rate = clamp(spawn_rate, 0, MAX_ENEMY_PER_SECOND)
-	$SpawnRateIncreaseSound.play()
+	$IncreaseLabel.visible = true
+	$IncreaseLabel/LabelAppearTimer.start()
 	set_timer_wait_time()
 
 func pick_random_spawn_position():
@@ -33,3 +34,7 @@ func pick_random_spawn_position():
 	var y = 0 - spawn_y_offset
 	
 	return Vector2(x, y)
+
+
+func _on_label_appear_timer_timeout():
+	$IncreaseLabel.visible = false
