@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://1xc22moju4io"]
+
+[ext_resource type="Script" path="res://enemy/bomb.gd" id="1_qb1r7"]
+[ext_resource type="Texture2D" uid="uid://41055l75g2xg" path="res://enemy/bomb.png" id="2_bjw03"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jl68i"]
+radius = 41.0488
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvrnx"]
+radius = 579.34
+
+[node name="Bomb" type="RigidBody2D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_qb1r7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.232, 0.232)
+texture = ExtResource("2_bjw03")
+
+[node name="BombCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jl68i")
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+
+[node name="ExplosionCircle" type="CollisionShape2D" parent="ExplosionArea"]
+shape = SubResource("CircleShape2D_rvrnx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

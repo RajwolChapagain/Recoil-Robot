@@ -5,6 +5,8 @@ var move_right = false
 var target = self
 var health_points = 40
 var is_deploying = true
+var approximate_bottom_screen_position = 1296
+var bomb_scene = load("res://enemy/bomb.tscn")
 
 func _ready():
 	gravity_scale = 0.4
@@ -28,6 +30,7 @@ func _integrate_forces(state):
 
 func _physics_process(delta):
 	move_to_target()
+	check_if_below_screen()
 	
 func move_to_target():
 	if target.position.x - position.x > 0:
@@ -43,7 +46,6 @@ func set_target(new_target):
 
 func die():
 	queue_free()
-
 
 func _on_body_entered(body):
 	if body.name == "Robot":
@@ -63,3 +65,20 @@ func on_robot_touched(robot):
 		robot.disable_shooting()
 	
 	die()
+
+func check_if_below_screen():
+	if position.y > approximate_bottom_screen_position:
+		die()
+		summon_bomb()
+		
+func summon_bomb():
+	var bomb = bomb_scene.instantiate()
+	get_tree().get_root().add_child(bomb)
+	
+	bomb.position = pick_random_spawn_position()
+	
+func pick_random_spawn_position():
+	var x = randi_range(0, 1920)
+	var y = -200
+	
+	return Vector2(x, y)

@@ -17,10 +17,11 @@ func _ready():
 		distance_to_gun = $Gun.position.length()
 
 func _physics_process(delta):
-		handle_gun_rotation(delta)
-		
-		if global_position.y > get_viewport_rect().size.y:
-			print("player has fallen")
+	handle_gun_rotation(delta)
+	
+	if global_position.y > get_viewport_rect().size.y:
+		#print("player has fallen")
+		pass
 			
 func _input(event):
 	if event.is_action_pressed("fire_bullet"):
