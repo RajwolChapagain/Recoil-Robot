@@ -8,7 +8,5 @@ func _on_body_entered(body):
 func explode():
 	for body in $ExplosionArea.get_overlapping_bodies():
 		if body.is_in_group("enemy") or body.name == "Robot":
-			body.apply_central_impulse(explosion_force * global_position.direction_to(body.global_position))
-			print(body.name)
-	
+			body.apply_central_impulse(explosion_force * global_position.direction_to(body.global_position))	
 	queue_free()

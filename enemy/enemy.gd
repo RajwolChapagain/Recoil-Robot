@@ -11,9 +11,7 @@ var bomb_scene = load("res://enemy/bomb.tscn")
 func _ready():
 	gravity_scale = 0.4
 	
-func on_shot(impulse, direction, damage):
-	#apply_central_impulse(impulse * direction)
-	
+func on_shot(impulse, direction, damage):	
 	health_points -= damage
 	
 	if health_points <= 0:
@@ -34,9 +32,17 @@ func _physics_process(delta):
 	
 func move_to_target():
 	if target.position.x - position.x > 0:
-		move_right = true
+		if move_right == false:
+			if $DirectionChangeDelay.is_stopped():
+				$DirectionChangeDelay.start()
+				await $DirectionChangeDelay.timeout
+				move_right = true
 	else:
-		move_right = false
+		if move_right == true:
+			if $DirectionChangeDelay.is_stopped():
+				$DirectionChangeDelay.start()
+				await $DirectionChangeDelay.timeout
+				move_right = false
 
 func set_target(new_target):
 	if is_deploying:
@@ -82,3 +88,6 @@ func pick_random_spawn_position():
 	var y = -200
 	
 	return Vector2(x, y)
+
+func set_move_right(is_moving_right):
+	move_right = is_moving_right
