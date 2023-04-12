@@ -19,9 +19,7 @@ func _physics_process(delta):
 		
 func _on_body_entered(body):
 	if body.is_in_group("shootable"):
-		body.on_shot(get_damage_based_on_distance(), position.normalized(), damage)
+		body.on_shot(damage, position.normalized(), damage)
 		queue_free()
-	
-func get_damage_based_on_distance():
-	var damage = (min_bullet_impact_force - max_bullet_impact_force) * (initial_position.distance_to(position)) / max_bullet_distance + max_bullet_impact_force
-	return damage
+	elif body.is_in_group("platform"):
+		queue_free()
