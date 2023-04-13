@@ -12,8 +12,6 @@ var can_move = true
 var can_jump = true
 var can_shoot = true
 
-var print_time = false
-
 signal player_died
 
 func _ready():
@@ -23,9 +21,6 @@ func _ready():
 func _physics_process(delta):
 	handle_gun_rotation(delta)
 	check_if_fallen()
-			
-	if print_time:
-		print($FiveSecondDeathTimer.time_left)
 		
 func _input(event):
 	if event.is_action_pressed("fire_bullet"):
@@ -86,10 +81,10 @@ func disable_shooting():
 func check_if_fallen():
 	if global_position.y > get_viewport_rect().size.y + 200:
 		on_death()
+		queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	$FiveSecondDeathTimer.start()
-	print_time = true
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	$FiveSecondDeathTimer.stop()
