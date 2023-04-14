@@ -9,6 +9,8 @@ var camera_zoom = 0.8 #get this from the main scene's camera
 var spawn_y_offset = 200
 var rate_increase_interval = 20
 
+signal enemy_spawned(enemy)
+
 func _ready():
 	$RateIncrementTimer.wait_time = rate_increase_interval
 	set_timer_wait_time()
@@ -21,6 +23,7 @@ func _on_spawn_rate_timer_timeout():
 	var enemy = ENEMY_SCENE.instantiate()
 	add_child(enemy)
 	enemy.position = pick_random_spawn_position()
+	emit_signal("enemy_spawned", enemy)
 
 func _on_rate_increment_timer_timeout():
 	spawn_rate += spawn_rate_increment

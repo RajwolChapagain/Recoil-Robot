@@ -8,6 +8,8 @@ var is_deploying = true
 var approximate_bottom_screen_position = 1296
 var bomb_scene = load("res://enemy/bomb.tscn")
 
+signal on_killed
+
 func _ready():
 	gravity_scale = 0.4
 	
@@ -15,6 +17,7 @@ func on_shot(impulse, direction, damage):
 	health_points -= damage
 	
 	if health_points <= 0:
+		emit_signal("on_killed")
 		die()
 
 func _integrate_forces(state):
