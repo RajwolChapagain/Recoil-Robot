@@ -25,7 +25,7 @@ func save_kills_and_time(kills, time):
 
 func load_kills_and_time():
 	if not FileAccess.file_exists("res://high_scores.save"):
-		return
+		return {"kills" : 0, "time" : 0}
 		
 	var save_file = FileAccess.open("res://high_scores.save", FileAccess.READ)
 	var json_string = save_file.get_line()
