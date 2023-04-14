@@ -22,3 +22,5 @@ func on_game_over():
 
 func on_enemy_killed():
 	kill_count += 1
+
+
