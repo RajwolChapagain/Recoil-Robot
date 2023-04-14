@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brwr5mybbwdat"]
 
 [ext_resource type="Script" path="res://player/robot.gd" id="1_1wear"]
-[ext_resource type="Texture2D" uid="uid://bljpqswc84ytx" path="res://player/Robot.png" id="2_1wycr"]
+[ext_resource type="Texture2D" uid="uid://c1a2c6fmfw1f5" path="res://player/robot.png" id="2_f7b7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71nt1"]
 size = Vector2(128, 127)
@@ -15,7 +15,7 @@ script = ExtResource("1_1wear")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.276, 0.276)
-texture = ExtResource("2_1wycr")
+texture = ExtResource("2_f7b7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

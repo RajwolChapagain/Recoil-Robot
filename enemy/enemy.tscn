@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_bgosg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmitk"]
-size = Vector2(112, 112)
+size = Vector2(112, 126)
 
 [node name="Enemy" type="RigidBody2D" groups=["enemy", "shootable"]]
 max_contacts_reported = 2
@@ -14,10 +14,11 @@ lock_rotation = true
 script = ExtResource("1_bgosg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.224, 0.224)
+scale = Vector2(0.312, 0.312)
 texture = ExtResource("1_7wb8p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_gmitk")
 
 [node name="DirectionChangeDelay" type="Timer" parent="."]
