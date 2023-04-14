@@ -15,7 +15,7 @@ func on_enemy_spawned(enemy):
 	enemy.connect("on_killed", on_enemy_killed)
 	
 func on_game_over():
-	$GameOverScreen.display_game_over_panel(1, 2)
+	$GameOverScreen.display_game_over_panel(kill_count, Time.get_ticks_msec() / 1000)
 
 func on_enemy_killed():
 	kill_count += 1
