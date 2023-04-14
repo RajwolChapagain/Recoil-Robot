@@ -7,14 +7,10 @@ func _ready():
 	$Robot.connect("player_died", on_game_over)
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
 	time_started = Time.get_ticks_msec()
-	
-func _process(delta):
-	if $Robot != null:
-		get_tree().call_group("enemy", "set_target", $Robot)
-		
 
 func on_enemy_spawned(enemy):
 	enemy.connect("on_killed", on_enemy_killed)
+	enemy.connect("enemy_deployed", on_enemy_deployed)
 	
 func on_game_over():
 	$GameOverScreen.display_game_over_panel(kill_count, (Time.get_ticks_msec() - time_started) / 1000)
@@ -22,5 +18,8 @@ func on_game_over():
 
 func on_enemy_killed():
 	kill_count += 1
+	
+func on_enemy_deployed(enemy):
+	enemy.set_target($Robot)
 
 

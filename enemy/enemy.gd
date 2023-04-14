@@ -8,6 +8,7 @@ var is_deploying = true
 var approximate_bottom_screen_position = 1296
 var bomb_scene = load("res://enemy/bomb.tscn")
 
+signal enemy_deployed(enemy)
 signal on_killed
 
 func _ready():
@@ -48,11 +49,15 @@ func move_to_target():
 				move_right = false
 
 func set_target(new_target):
-	if is_deploying:
-		return
-		
 	target = new_target
 
+	if target.position.x - position.x > 0:
+		if move_right == false:
+				move_right = true
+	else:
+		if move_right == true:
+				move_right = false
+				
 func die():
 	queue_free()
 
@@ -64,6 +69,7 @@ func _on_body_entered(body):
 		if is_deploying:
 			is_deploying = false
 			gravity_scale = 1
+			emit_signal("enemy_deployed", self)
 		
 func on_robot_touched(robot):
 	if robot.can_jump:
