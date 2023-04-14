@@ -68,7 +68,7 @@ func handle_gun_rotation(physics_process_delta):
 	
 func disable_jump():
 	can_jump = false
-	$Gun.recoil_force *= 1.5
+	$Gun.recoil_force *= 1.8
 	
 func disable_movement():
 	can_move = false
@@ -77,6 +77,7 @@ func disable_movement():
 
 func disable_shooting():
 	can_shoot = false
+	on_death()
 
 func check_if_fallen():
 	if global_position.y > get_viewport_rect().size.y + 200:
