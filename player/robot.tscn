@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://brwr5mybbwdat"]
 
 [ext_resource type="Script" path="res://player/robot.gd" id="1_1wear"]
-[ext_resource type="Texture2D" uid="uid://c1wx1rdkynrkp" path="res://icon.svg" id="2_tfn5u"]
+[ext_resource type="Texture2D" uid="uid://bljpqswc84ytx" path="res://player/Robot.png" id="2_1wycr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71nt1"]
-size = Vector2(128, 128)
+size = Vector2(128, 127)
 
 [node name="Robot" type="RigidBody2D"]
 max_contacts_reported = 1
@@ -14,9 +14,11 @@ lock_rotation = true
 script = ExtResource("1_1wear")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tfn5u")
+scale = Vector2(0.276, 0.276)
+texture = ExtResource("2_1wycr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_71nt1")
 
 [node name="FiveSecondDeathTimer" type="Timer" parent="."]
@@ -24,7 +26,8 @@ wait_time = 6.0
 one_shot = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(6.5, 6.5)
+position = Vector2(0, 1)
+scale = Vector2(6.4, 6.3)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
