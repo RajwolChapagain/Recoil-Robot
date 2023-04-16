@@ -7,7 +7,8 @@ var distance_to_gun
 var increment_angle_per_second_degrees = 100
 var gun_rotation_angle = 0
 var sensitivity = 4
-
+var robot_without_pad = load("res://player/robot_without_pad.png")
+var robot_without_pad_and_wheels = load("res://player/robot_without_pad_and_wheels.png")
 var can_move = true
 var can_jump = true
 var can_shoot = true
@@ -69,11 +70,13 @@ func handle_gun_rotation(physics_process_delta):
 func disable_jump():
 	can_jump = false
 	$Gun.recoil_force *= 1.8
+	$Sprite2D.texture = robot_without_pad
 	
 func disable_movement():
 	can_move = false
 	$Gun.fire_rate *= 2
 	$Gun.set_reload_time_using_bullets_per_second($Gun.fire_rate)
+	$Sprite2D.texture = robot_without_pad_and_wheels
 
 func disable_shooting():
 	can_shoot = false
