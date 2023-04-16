@@ -7,6 +7,9 @@ var health_points = 40
 var is_deploying = true
 var approximate_bottom_screen_position = 1296
 var bomb_scene = load("res://enemy/bomb.tscn")
+var red_eye_sprite = load("res://enemy/enemy.png")
+var green_eye_sprite = load("res://enemy/enemy_green_eye.png")
+var touched_player = false
 
 signal enemy_deployed(enemy)
 signal on_killed
@@ -67,11 +70,13 @@ func _on_body_entered(body):
 			on_robot_touched(body)
 	elif body.is_in_group("platform"):
 		if is_deploying:
-			is_deploying = false
-			gravity_scale = 1
-			emit_signal("enemy_deployed", self)
+			on_deployment_complete()
+			
 		
 func on_robot_touched(robot):
+	if touched_player:
+		return
+		
 	if robot.can_jump:
 		robot.disable_jump()
 	elif robot.can_move:
@@ -79,8 +84,10 @@ func on_robot_touched(robot):
 	else:
 		robot.disable_shooting()
 	
-	die()
-
+	move_speed = 0
+	$Sprite2D.texture = green_eye_sprite
+	touched_player = true
+	
 func check_if_below_screen():
 	if position.y > approximate_bottom_screen_position:
 		die()
@@ -100,3 +107,9 @@ func pick_random_spawn_position():
 
 func set_move_right(is_moving_right):
 	move_right = is_moving_right
+
+func on_deployment_complete():
+	is_deploying = false
+	gravity_scale = 1
+	emit_signal("enemy_deployed", self)
+	$Sprite2D.texture = red_eye_sprite
