@@ -93,7 +93,7 @@ func summon_bomb():
 	bomb.position = pick_random_spawn_position()
 	
 func pick_random_spawn_position():
-	var x = randi_range(0, 1920)
+	var x = randi_range(-240, 2160) #True for 0.8x zoom on Camera
 	var y = -200
 	
 	return Vector2(x, y)

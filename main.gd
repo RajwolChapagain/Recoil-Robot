@@ -7,7 +7,9 @@ func _ready():
 	$Robot.connect("player_died", on_game_over)
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
 	time_started = Time.get_ticks_msec()
-
+	print($Camera2D.get_screen_center_position())
+	randomize()
+	
 func on_enemy_spawned(enemy):
 	enemy.connect("on_killed", on_enemy_killed)
 	enemy.connect("enemy_deployed", on_enemy_deployed)

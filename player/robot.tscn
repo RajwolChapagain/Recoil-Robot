@@ -18,6 +18,7 @@ scale = Vector2(0.276, 0.276)
 texture = ExtResource("2_f7b7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_71nt1")
 
@@ -26,6 +27,7 @@ wait_time = 6.0
 one_shot = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 scale = Vector2(6.4, 6.3)
 

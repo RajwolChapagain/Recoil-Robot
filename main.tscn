@@ -21,7 +21,6 @@ position = Vector2(141, 0)
 [node name="EnemySpawner" parent="." instance=ExtResource("6_i7ihu")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(960, 540)
 zoom = Vector2(0.8, 0.8)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("6_opsha")]
