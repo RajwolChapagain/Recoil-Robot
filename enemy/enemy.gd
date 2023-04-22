@@ -24,7 +24,9 @@ func on_shot(impulse, direction, damage):
 	
 	if health_points <= 0:
 		emit_signal("on_killed")
-		call_deferred("spawn_kill_token")
+		
+		if !touched_player:
+			call_deferred("spawn_kill_token")
 		die()
 
 func spawn_kill_token():
