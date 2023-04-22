@@ -21,7 +21,9 @@ func _ready():
 		distance_to_gun = $Gun.position.length()
 
 func _physics_process(delta):
-	handle_gun_rotation(delta)
+	if can_shoot:
+		handle_gun_rotation(delta)
+		
 	check_if_fallen()
 		
 func _input(event):
