@@ -14,6 +14,8 @@ var is_reloading = false
 var gun_reloading_sprite = load("res://gun/gun_reloading.png")
 var large_charge_gun_sprite = load("res://gun/gun_larger_charge.png")
 var large_charge_gun_reloading_sprite = load("res://gun/gun_larger_charge_reloading.png")
+var short_charge_gun_sprite = load("res://gun/gun_shorter_charge.png")
+var short_charge_gun_reloading_sprite = load("res://gun/gun_shorter_charge_reloading.png")
 
 func _ready():
 	gun_sprite_offset_x = $Sprite2D.position.x
@@ -67,6 +69,15 @@ func set_reload_time_using_bullets_per_second(bullets_per_second):
 func change_default_and_reload_sprite_to_larger_charge():
 	normal_gun_sprite = large_charge_gun_sprite
 	gun_reloading_sprite = large_charge_gun_reloading_sprite
+	
+	if is_reloading:
+		$Sprite2D.texture = gun_reloading_sprite
+	else:
+		$Sprite2D.texture = normal_gun_sprite
+
+func change_default_and_reload_sprite_to_shorter_charge():
+	normal_gun_sprite = short_charge_gun_sprite
+	gun_reloading_sprite = short_charge_gun_reloading_sprite
 	
 	if is_reloading:
 		$Sprite2D.texture = gun_reloading_sprite

@@ -81,6 +81,7 @@ func disable_movement():
 	$Gun.fire_rate *= 2
 	$Gun.set_reload_time_using_bullets_per_second($Gun.fire_rate)
 	$Sprite2D.texture = robot_without_pad_and_wheels
+	$Gun.change_default_and_reload_sprite_to_shorter_charge()
 
 func disable_shooting():
 	can_shoot = false
