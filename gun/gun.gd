@@ -10,6 +10,8 @@ var max_bullet_spread_angle = 0
 var angle_between_bullets
 var fire_rate = 2
 var is_reloading = false
+@onready var normal_gun_sprite = $Sprite2D.texture
+var gun_reloading_sprite = load("res://gun/gun_reloading.png")
 
 func _ready():
 	gun_sprite_offset_x = $Sprite2D.position.x
@@ -19,6 +21,7 @@ func _ready():
 func fire_bullet():
 	if not is_reloading:
 		is_reloading = true
+		$Sprite2D.texture = gun_reloading_sprite
 		$ReloadTimer.start()
 		var bullet = BULLET_SCENE.instantiate()
 		call_deferred("add_sibling_and_set_direction", bullet)
@@ -38,6 +41,7 @@ func _on_reload_timer_timeout():
 	#print("Shot ready!")
 	instantiate_shell()
 	is_reloading = false
+	$Sprite2D.texture = normal_gun_sprite
 
 func instantiate_shell():
 	var max_shell_offset_angle = 45
