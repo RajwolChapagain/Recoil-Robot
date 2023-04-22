@@ -7,7 +7,7 @@
 size = Vector2(112, 126)
 
 [node name="Enemy" type="RigidBody2D" groups=["enemy", "shootable"]]
-max_contacts_reported = 2
+max_contacts_reported = 4
 contact_monitor = true
 can_sleep = false
 lock_rotation = true

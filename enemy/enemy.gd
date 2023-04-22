@@ -14,6 +14,7 @@ var touched_player = false
 
 signal enemy_deployed(enemy)
 signal on_killed
+signal kill_token_spawned(kill_token)
 
 func _ready():
 	gravity_scale = 0.4
@@ -23,13 +24,14 @@ func on_shot(impulse, direction, damage):
 	
 	if health_points <= 0:
 		emit_signal("on_killed")
-		spawn_kill_token()
+		call_deferred("spawn_kill_token")
 		die()
 
 func spawn_kill_token():
 	var kill_token = kill_token_scene.instantiate()
-	get_tree().root.add_child(kill_token)
+	get_tree().get_root().add_child(kill_token)
 	kill_token.position = global_position
+	emit_signal("kill_token_spawned", kill_token)
 	
 func _integrate_forces(state):
 	if is_deploying:

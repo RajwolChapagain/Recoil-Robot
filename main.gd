@@ -14,6 +14,7 @@ func _ready():
 func on_enemy_spawned(enemy):
 	enemy.connect("on_killed", on_enemy_killed)
 	enemy.connect("enemy_deployed", on_enemy_deployed)
+	enemy.connect("kill_token_spawned", on_kill_token_spawned)
 	
 func on_game_over():
 	if !game_over:
@@ -22,10 +23,14 @@ func on_game_over():
 		get_tree().call_group("enemy", "set_target", self)
 
 func on_enemy_killed():
-	kill_count += 1
+	pass
 	
 func on_enemy_deployed(enemy):
 	if !game_over:
 		enemy.set_target($Robot)
 
-
+func on_kill_token_spawned(kill_token):
+	kill_token.connect("kill_token_collected", on_kill_token_collected)
+	
+func on_kill_token_collected():
+	kill_count += 1
