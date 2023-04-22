@@ -23,7 +23,7 @@ func on_game_over():
 		get_tree().call_group("enemy", "set_target", self)
 
 func on_enemy_killed():
-	pass
+	shake_camera(10, 10, 0.3)
 	
 func on_enemy_deployed(enemy):
 	if !game_over:
@@ -34,3 +34,17 @@ func on_kill_token_spawned(kill_token):
 	
 func on_kill_token_collected():
 	kill_count += 1
+
+func shake_camera(max_x_displacement, max_y_displacement, duration):
+	var initial_camera_offset = $Camera2D.offset
+	
+	while duration > 0:
+		var rand_x_displacement = randf_range(-max_x_displacement, max_x_displacement)
+		var rand_y_displacement = randf_range(-max_y_displacement, max_y_displacement)
+		$Camera2D.offset = initial_camera_offset + Vector2(rand_x_displacement, rand_y_displacement)
+		duration -= get_physics_process_delta_time()
+		await get_tree().process_frame
+	
+	$Camera2D.offset = initial_camera_offset
+		
+	
