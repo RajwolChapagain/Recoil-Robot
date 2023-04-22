@@ -9,6 +9,7 @@ var gun_rotation_angle = 0
 var sensitivity = 4
 var robot_without_pad = load("res://player/robot_without_pad.png")
 var robot_without_pad_and_wheels = load("res://player/robot_without_pad_and_wheels.png")
+var robot_inactive= load("res://player/robot_inactive.png")
 var can_move = true
 var can_jump = true
 var can_shoot = true
@@ -97,4 +98,5 @@ func _on_five_second_death_timer_timeout():
 	on_death()
 
 func on_death():
+	$Sprite2D.texture = robot_inactive
 	emit_signal("player_died")
