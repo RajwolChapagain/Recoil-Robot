@@ -23,7 +23,8 @@ func on_game_over():
 		get_tree().call_group("enemy", "set_target", self)
 
 func on_enemy_killed():
-	shake_camera(10, 10, 0.3)
+	shake_camera(10, 10, 0.2)
+	Input.start_joy_vibration(0, 0.5, 1, 0.2)
 	
 func on_enemy_deployed(enemy):
 	if !game_over:
