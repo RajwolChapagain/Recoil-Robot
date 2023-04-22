@@ -7,6 +7,7 @@ var health_points = 40
 var is_deploying = true
 var approximate_bottom_screen_position = 1296
 var bomb_scene = load("res://enemy/bomb.tscn")
+var kill_token_scene = load("res://enemy/kill_token.tscn")
 var red_eye_sprite = load("res://enemy/enemy.png")
 var green_eye_sprite = load("res://enemy/enemy_green_eye.png")
 var touched_player = false
@@ -22,8 +23,14 @@ func on_shot(impulse, direction, damage):
 	
 	if health_points <= 0:
 		emit_signal("on_killed")
+		spawn_kill_token()
 		die()
 
+func spawn_kill_token():
+	var kill_token = kill_token_scene.instantiate()
+	get_tree().root.add_child(kill_token)
+	kill_token.position = global_position
+	
 func _integrate_forces(state):
 	if is_deploying:
 		return
