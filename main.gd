@@ -23,8 +23,8 @@ func on_game_over():
 		get_tree().call_group("enemy", "set_target", self)
 
 func on_enemy_killed():
-	shake_camera(10, 10, 0.2)
-	Input.start_joy_vibration(0, 0.5, 1, 0.2)
+	shake_camera(10, 10, 0.15)
+	Input.start_joy_vibration(0, 0.5, 1, 0.15)
 	
 func on_enemy_deployed(enemy):
 	if !game_over:
@@ -44,7 +44,7 @@ func shake_camera(max_x_displacement, max_y_displacement, duration):
 		var rand_y_displacement = randf_range(-max_y_displacement, max_y_displacement)
 		$Camera2D.offset = initial_camera_offset + Vector2(rand_x_displacement, rand_y_displacement)
 		duration -= get_physics_process_delta_time()
-		await get_tree().process_frame
+		await get_tree().physics_frame
 	
 	$Camera2D.offset = initial_camera_offset
 		
