@@ -6,7 +6,7 @@ var is_grounded = false
 var distance_to_gun
 var increment_angle_per_second_degrees = 100
 var gun_rotation_angle = 0
-var sensitivity = 4
+var sensitivity = 3
 var robot_without_pad = load("res://player/robot_without_pad.png")
 var robot_without_pad_and_wheels = load("res://player/robot_without_pad_and_wheels.png")
 var robot_inactive= load("res://player/robot_inactive.png")
