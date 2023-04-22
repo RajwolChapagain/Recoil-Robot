@@ -12,6 +12,8 @@ var fire_rate = 2
 var is_reloading = false
 @onready var normal_gun_sprite = $Sprite2D.texture
 var gun_reloading_sprite = load("res://gun/gun_reloading.png")
+var large_charge_gun_sprite = load("res://gun/gun_larger_charge.png")
+var large_charge_gun_reloading_sprite = load("res://gun/gun_larger_charge_reloading.png")
 
 func _ready():
 	gun_sprite_offset_x = $Sprite2D.position.x
@@ -35,7 +37,6 @@ func add_sibling_and_set_direction(bullet):
 		
 func give_parent_recoil():
 	get_parent().apply_impulse(-position.normalized() * recoil_force)
-
 
 func _on_reload_timer_timeout():
 	#instantiate_shell()
@@ -63,3 +64,11 @@ func _on_reload_timer_timeout():
 func set_reload_time_using_bullets_per_second(bullets_per_second):
 	$ReloadTimer.wait_time = 1.0 / bullets_per_second
 	
+func change_default_and_reload_sprite_to_larger_charge():
+	normal_gun_sprite = large_charge_gun_sprite
+	gun_reloading_sprite = large_charge_gun_reloading_sprite
+	
+	if is_reloading:
+		$Sprite2D.texture = gun_reloading_sprite
+	else:
+		$Sprite2D.texture = normal_gun_sprite

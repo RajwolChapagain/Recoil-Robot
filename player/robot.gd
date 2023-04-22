@@ -74,6 +74,7 @@ func disable_jump():
 	can_jump = false
 	$Gun.recoil_force *= 1.8
 	$Sprite2D.texture = robot_without_pad
+	$Gun.change_default_and_reload_sprite_to_larger_charge()
 	
 func disable_movement():
 	can_move = false
