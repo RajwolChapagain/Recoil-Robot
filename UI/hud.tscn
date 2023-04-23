@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bntope0cnvg6u"]
+
+[ext_resource type="Texture2D" uid="uid://dg7pc6osth2od" path="res://enemy/kill_token.png" id="1_cyoy2"]
+[ext_resource type="Texture2D" uid="uid://d4kc526h2iplh" path="res://UI/stopwatch.png" id="2_bmm3h"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 22.0
+offset_right = 232.0
+offset_bottom = 138.0
+
+[node name="KillCountContainer" type="HBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="KillCountToken" type="TextureRect" parent="StatsContainer/KillCountContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_cyoy2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KillCountLabel" type="Label" parent="StatsContainer/KillCountContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 1
+
+[node name="TimeContainer" type="HBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StopwatchTexture" type="TextureRect" parent="StatsContainer/TimeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_bmm3h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TimeLabel" type="Label" parent="StatsContainer/TimeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 1
