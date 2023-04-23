@@ -10,6 +10,13 @@ func _ready():
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
 	time_started = Time.get_ticks_msec()
 	randomize()
+
+func _physics_process(delta):
+	if !game_over:
+		update_hud_time()
+	
+func update_hud_time():
+	$HUD.set_time_label( (Time.get_ticks_msec() - time_started) / 1000)
 	
 func on_enemy_spawned(enemy):
 	enemy.connect("on_killed", on_enemy_killed)
@@ -35,6 +42,7 @@ func on_kill_token_spawned(kill_token):
 	
 func on_kill_token_collected():
 	kill_count += 1
+	$HUD.set_kill_count_label(kill_count)
 
 func shake_camera(max_x_displacement, max_y_displacement, duration):
 	var initial_camera_offset = $Camera2D.offset
