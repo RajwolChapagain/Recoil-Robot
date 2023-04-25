@@ -7,6 +7,8 @@ var game_over = false
 
 func _ready():
 	$Robot.connect("player_died", on_game_over)
+	$Robot/VisibleOnScreenNotifier2D.connect("screen_exited", on_player_exit_screen)
+	$Robot/VisibleOnScreenNotifier2D.connect("screen_entered", on_player_enter_screen)	
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
 	$Robot/Gun.connect("gun_fired", on_gun_fired)
 	time_started = Time.get_ticks_msec()
@@ -15,12 +17,19 @@ func _ready():
 func _physics_process(delta):
 	if !game_over:
 		update_hud_time()
+
+func on_player_exit_screen():
+	$HUD/FiveSecondRuleLabel.visible = true
 	
+func on_player_enter_screen():
+	$HUD/FiveSecondRuleLabel.visible = false
+		
 func on_gun_fired(bullet_direction):
 	shake_camera(-bullet_direction.x * 5, -bullet_direction.y * 5, 0.1)
 	
 func update_hud_time():
 	$HUD.set_time_label( (Time.get_ticks_msec() - time_started) / 1000)
+	$HUD/FiveSecondRuleLabel.text = str(int($Robot/FiveSecondDeathTimer.time_left))
 	
 func on_enemy_spawned(enemy):
 	enemy.connect("on_killed", on_enemy_killed)
