@@ -8,9 +8,9 @@ func _on_body_entered(body):
 	
 func explode():
 	for body in $ExplosionArea.get_overlapping_bodies():
-		if body.is_in_group("enemy") or body.name == "Robot":
+		if body.is_in_group("enemy") or body.name == "Robot" or body.is_in_group("kill_token"):
 			body.apply_central_impulse(explosion_force * global_position.direction_to(body.global_position))
-	
+			
 	$Sprite2D.visible = false
 	$BombRadiusSprite.visible = true
 	call_deferred("freeze_body_and_disable_collision_shape")

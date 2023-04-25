@@ -29,6 +29,7 @@ position = Vector2(0, -15.5)
 shape = SubResource("RectangleShape2D_fjnmo")
 
 [node name="ExplosionArea" type="Area2D" parent="."]
+collision_mask = 5
 
 [node name="ExplosionCircle" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_rvrnx")
