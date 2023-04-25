@@ -15,6 +15,7 @@ var touched_player = false
 signal enemy_deployed(enemy)
 signal on_killed
 signal kill_token_spawned(kill_token)
+signal bomb_summoned(bomb)
 
 func _ready():
 	gravity_scale = 0.4
@@ -107,7 +108,7 @@ func check_if_below_screen():
 func summon_bomb():
 	var bomb = bomb_scene.instantiate()
 	get_tree().get_root().add_child(bomb)
-	
+	emit_signal("bomb_summoned", bomb)
 	bomb.position = pick_random_spawn_position()
 	
 func pick_random_spawn_position():

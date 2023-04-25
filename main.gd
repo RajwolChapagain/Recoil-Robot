@@ -22,6 +22,13 @@ func on_enemy_spawned(enemy):
 	enemy.connect("on_killed", on_enemy_killed)
 	enemy.connect("enemy_deployed", on_enemy_deployed)
 	enemy.connect("kill_token_spawned", on_kill_token_spawned)
+	enemy.connect("bomb_summoned", on_bomb_summoned)
+	
+func on_bomb_summoned(bomb):
+	bomb.connect("bomb_exploded", on_bomb_exploded)
+	
+func on_bomb_exploded():
+	shake_camera(30, 30, 0.5)
 	
 func on_game_over():
 	if !game_over:
