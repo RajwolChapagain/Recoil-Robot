@@ -17,6 +17,8 @@ var large_charge_gun_reloading_sprite = load("res://gun/gun_larger_charge_reload
 var short_charge_gun_sprite = load("res://gun/gun_shorter_charge.png")
 var short_charge_gun_reloading_sprite = load("res://gun/gun_shorter_charge_reloading.png")
 
+signal gun_fired(bullet_direction)
+
 func _ready():
 	gun_sprite_offset_x = $Sprite2D.position.x
 	angle_between_bullets = max_bullet_spread_angle / bullets_per_shot
@@ -30,6 +32,7 @@ func fire_bullet():
 		var bullet = BULLET_SCENE.instantiate()
 		call_deferred("add_sibling_and_set_direction", bullet)
 
+		emit_signal("gun_fired", position.normalized())
 		give_parent_recoil()
 
 func add_sibling_and_set_direction(bullet):

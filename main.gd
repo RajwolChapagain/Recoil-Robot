@@ -8,12 +8,16 @@ var game_over = false
 func _ready():
 	$Robot.connect("player_died", on_game_over)
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
+	$Robot/Gun.connect("gun_fired", on_gun_fired)
 	time_started = Time.get_ticks_msec()
 	randomize()
 
 func _physics_process(delta):
 	if !game_over:
 		update_hud_time()
+	
+func on_gun_fired(bullet_direction):
+	shake_camera(-bullet_direction.x * 5, -bullet_direction.y * 5, 0.1)
 	
 func update_hud_time():
 	$HUD.set_time_label( (Time.get_ticks_msec() - time_started) / 1000)
@@ -52,7 +56,7 @@ func on_kill_token_collected():
 	$HUD.set_kill_count_label(kill_count)
 
 func shake_camera(max_x_displacement, max_y_displacement, duration):
-	var initial_camera_offset = $Camera2D.offset
+	var initial_camera_offset = Vector2(960, 540)
 	
 	while duration > 0:
 		var rand_x_displacement = randf_range(-max_x_displacement, max_x_displacement)
