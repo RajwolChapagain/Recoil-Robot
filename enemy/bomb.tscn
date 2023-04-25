@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://1xc22moju4io"]
+[gd_scene load_steps=6 format=3 uid="uid://1xc22moju4io"]
 
 [ext_resource type="Script" path="res://enemy/bomb.gd" id="1_qb1r7"]
 [ext_resource type="Texture2D" uid="uid://41055l75g2xg" path="res://enemy/bomb.png" id="2_bjw03"]
+[ext_resource type="Texture2D" uid="uid://cu2mjsf0logd7" path="res://enemy/bomb_radius.png" id="2_uibyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjnmo"]
 size = Vector2(58, 125)
@@ -13,6 +14,11 @@ radius = 579.34
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_qb1r7")
+
+[node name="BombRadiusSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("2_uibyy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.46, 0.46)
