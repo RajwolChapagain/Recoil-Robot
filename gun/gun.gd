@@ -90,3 +90,6 @@ func change_default_and_reload_sprite_to_shorter_charge():
 
 func play_recoil_animation():
 	$AnimationPlayer.play("recoil")
+	
+func double_animation_speed():
+	$AnimationPlayer.speed_scale = 2
