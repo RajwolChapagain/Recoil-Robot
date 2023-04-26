@@ -32,7 +32,8 @@ func on_shot(impulse, direction, damage):
 
 func spawn_kill_token():
 	var kill_token = kill_token_scene.instantiate()
-	get_tree().get_root().add_child(kill_token)
+	get_tree().get_root().get_node("Main").add_child(kill_token)
+	#get_tree().get_root().add_child(kill_token)
 	kill_token.position = global_position
 	emit_signal("kill_token_spawned", kill_token)
 	
@@ -107,7 +108,8 @@ func check_if_below_screen():
 		
 func summon_bomb():
 	var bomb = bomb_scene.instantiate()
-	get_tree().get_root().add_child(bomb)
+	get_tree().get_root().get_node("Main").add_child(bomb)	
+	#get_tree().get_root().add_child(bomb)
 	emit_signal("bomb_summoned", bomb)
 	bomb.position = pick_random_spawn_position()
 	
