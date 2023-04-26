@@ -34,6 +34,7 @@ func fire_bullet():
 
 		emit_signal("gun_fired", position.normalized())
 		give_parent_recoil()
+		play_recoil_animation()
 
 func add_sibling_and_set_direction(bullet):
 	get_tree().get_root().add_child(bullet)
@@ -86,3 +87,6 @@ func change_default_and_reload_sprite_to_shorter_charge():
 		$Sprite2D.texture = gun_reloading_sprite
 	else:
 		$Sprite2D.texture = normal_gun_sprite
+
+func play_recoil_animation():
+	$AnimationPlayer.play("recoil")

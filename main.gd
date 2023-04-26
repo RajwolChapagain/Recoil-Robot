@@ -17,6 +17,8 @@ func _ready():
 func _physics_process(delta):
 	if !game_over:
 		update_hud_time()
+		if !$Robot.can_move:
+			get_tree().call_group("kill_token", "move_to_position", $Robot.position)
 
 func on_player_exit_screen():
 	$HUD/FiveSecondRuleLabel.visible = true
