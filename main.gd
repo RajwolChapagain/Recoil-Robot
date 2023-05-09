@@ -21,7 +21,7 @@ func _physics_process(delta):
 			get_tree().call_group("kill_token", "move_to_position", $Robot.position)
 
 func on_player_exit_screen():
-	$HUD/FiveSecondRuleLabel.visible = true
+	$HUD/FiveSecondRuleLabel.visible = true	
 	
 func on_player_enter_screen():
 	$HUD/FiveSecondRuleLabel.visible = false
