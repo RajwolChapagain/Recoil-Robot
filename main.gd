@@ -30,7 +30,6 @@ func on_gun_fired(bullet_direction):
 	shake_camera(-bullet_direction.x * 5, -bullet_direction.y * 5, 0.1)
 	
 func update_hud_time():
-	$HUD.set_time_label( (Time.get_ticks_msec() - time_started) / 1000)
 	$HUD/FiveSecondRuleLabel.text = str(int($Robot/FiveSecondDeathTimer.time_left))
 	
 func on_enemy_spawned(enemy):

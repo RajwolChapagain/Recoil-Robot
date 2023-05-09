@@ -38,12 +38,7 @@ offset = Vector2(960, 540)
 zoom = Vector2(0.8, 0.8)
 
 [node name="HUD" parent="." instance=ExtResource("7_hdmw3")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -220.0
-offset_top = -125.0
-offset_right = -220.0
-offset_bottom = -125.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = 2136.0
+offset_top = -129.0
+offset_right = 2136.0
+offset_bottom = -129.0
