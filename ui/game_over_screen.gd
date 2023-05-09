@@ -6,7 +6,7 @@ func _on_restart_button_button_down():
 func display_game_over_panel(kills, time):
 	visible = true
 	$%Kills.text += str(kills)
-	$%Time.text += str(time)
+	#$%Time.text += str(time)
 	
 		
 	if kills > load_kills_and_time()["kills"]:
@@ -14,7 +14,7 @@ func display_game_over_panel(kills, time):
 		
 	var high_scores = load_kills_and_time()
 	$%BestKills.text += str(high_scores["kills"])
-	$%AccompanyingTime.text += str(high_scores["time"])
+	#$%AccompanyingTime.text += str(high_scores["time"])
 
 func save_kills_and_time(kills, time):
 	var score_dict = {"kills" : kills, "time" : time}

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://btbwk8f0x8wn3"]
+[gd_scene load_steps=3 format=3 uid="uid://btbwk8f0x8wn3"]
 
 [ext_resource type="Script" path="res://enemy/enemy_spawner.gd" id="1_8g5xm"]
+[ext_resource type="Theme" uid="uid://dtpd6n45jfurp" path="res://ui/ui_theme.tres" id="2_pbw6f"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_8g5xm")
@@ -17,12 +18,13 @@ visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 960.0
-offset_right = 1130.0
-offset_bottom = 26.0
+offset_left = 951.0
+offset_right = 1139.0
+offset_bottom = 24.0
 grow_horizontal = 2
+theme = ExtResource("2_pbw6f")
 theme_override_font_sizes/font_size = 40
-text = "Spawn Rate Increased"
+text = "SPAWN RATE INCREASED"
 horizontal_alignment = 1
 vertical_alignment = 1
 

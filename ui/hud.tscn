@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bntope0cnvg6u"]
+[gd_scene load_steps=5 format=3 uid="uid://8qo5jwniwf4p"]
 
+[ext_resource type="Theme" uid="uid://dtpd6n45jfurp" path="res://ui/ui_theme.tres" id="1_8xoku"]
 [ext_resource type="Texture2D" uid="uid://dg7pc6osth2od" path="res://enemy/kill_token.png" id="1_cyoy2"]
-[ext_resource type="Script" path="res://UI/hud.gd" id="1_othjc"]
-[ext_resource type="Texture2D" uid="uid://d4kc526h2iplh" path="res://UI/stopwatch.png" id="2_bmm3h"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_othjc"]
+[ext_resource type="Texture2D" uid="uid://d4kc526h2iplh" path="res://ui/stopwatch.png" id="2_bmm3h"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8xoku")
 script = ExtResource("1_othjc")
 
 [node name="StatsContainer" type="VBoxContainer" parent="."]
@@ -50,6 +52,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="StopwatchTexture" type="TextureRect" parent="StatsContainer/TimeContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_bmm3h")
@@ -58,6 +61,7 @@ stretch_mode = 4
 
 [node name="TimeLabel" type="Label" parent="StatsContainer/TimeContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -73,7 +77,7 @@ offset_left = 1160.0
 offset_top = 159.0
 offset_right = 1217.0
 offset_bottom = 299.0
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
