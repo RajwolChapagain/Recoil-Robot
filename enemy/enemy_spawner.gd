@@ -40,3 +40,7 @@ func pick_random_spawn_position():
 
 func _on_label_appear_timer_timeout():
 	$IncreaseLabel.visible = false
+	
+func stop_spawning():
+	$SpawnRateTimer.stop()
+	$RateIncrementTimer.stop()

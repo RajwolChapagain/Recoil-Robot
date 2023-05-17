@@ -49,6 +49,7 @@ func on_game_over():
 		game_over = true
 		$GameOverScreen.display_game_over_panel(kill_count, (Time.get_ticks_msec() - time_started) / 1000)
 		get_tree().call_group("enemy", "set_target", self)
+		$EnemySpawner.stop_spawning()
 
 func on_enemy_killed():
 	shake_camera(10, 10, 0.15)
