@@ -79,4 +79,7 @@ func shake_camera(max_x_displacement, max_y_displacement, duration):
 	
 	$Camera2D.offset = initial_camera_offset
 		
-	
+
+func _input(event):
+	if event.is_action_pressed("quit_game"):
+		get_tree().quit()
