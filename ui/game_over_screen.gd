@@ -32,3 +32,7 @@ func load_kills_and_time():
 	var score_dict = JSON.parse_string(json_string)
 	
 	return score_dict
+
+
+func _on_quit_button_button_down():
+	get_tree().quit()

@@ -114,3 +114,4 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.41
 
 [connection signal="button_down" from="Panel/VBoxContainer/Buttons/RestartButton" to="." method="_on_restart_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_button_down"]
