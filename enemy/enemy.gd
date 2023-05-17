@@ -51,7 +51,7 @@ func _physics_process(delta):
 	check_if_below_screen()
 	
 func move_to_target():
-	if target.position.x - position.x > 0:
+	if target.global_position.x - global_position.x > 0:
 		if move_right == false:
 			if $DirectionChangeDelay.is_stopped():
 				$DirectionChangeDelay.start()
@@ -67,7 +67,7 @@ func move_to_target():
 func set_target(new_target):
 	target = new_target
 
-	if target.position.x - position.x > 0:
+	if target.global_position.x - global_position.x > 0:
 		if move_right == false:
 				move_right = true
 	else:
@@ -102,7 +102,7 @@ func on_robot_touched(robot):
 	touched_player = true
 	
 func check_if_below_screen():
-	if position.y > approximate_bottom_screen_position:
+	if global_position.y > approximate_bottom_screen_position:
 		die()
 		summon_bomb()
 		
@@ -111,7 +111,7 @@ func summon_bomb():
 	get_tree().get_root().get_node("Main").add_child(bomb)	
 	#get_tree().get_root().add_child(bomb)
 	emit_signal("bomb_summoned", bomb)
-	bomb.position = pick_random_spawn_position()
+	bomb.global_position = pick_random_spawn_position()
 	
 func pick_random_spawn_position():
 	var x = randi_range(-240, 2160) #True for 0.8x zoom on Camera

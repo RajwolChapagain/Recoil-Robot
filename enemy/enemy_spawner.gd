@@ -21,7 +21,7 @@ func set_timer_wait_time():
 func _on_spawn_rate_timer_timeout():
 	var enemy = ENEMY_SCENE.instantiate()
 	add_child(enemy)
-	enemy.position = pick_random_spawn_position()
+	enemy.global_position = pick_random_spawn_position()
 	emit_signal("enemy_spawned", enemy)
 
 func _on_rate_increment_timer_timeout():
