@@ -27,7 +27,7 @@ offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="Control" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,60 +37,48 @@ grow_vertical = 2
 
 [node name="GameOverText" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+offset_left = 231.0
+offset_top = 40.0
+offset_right = 516.0
+offset_bottom = 106.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gap3" type="Control" parent="Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.81
-
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
-
-[node name="Control" type="Control" parent="Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+offset_left = 110.0
+offset_top = 199.0
+offset_right = 645.0
+offset_bottom = 253.0
+size_flags_vertical = 4
 
 [node name="Kills" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.5
+size_flags_stretch_ratio = 2.52
 theme_override_font_sizes/font_size = 40
 text = "CURRENT:"
 vertical_alignment = 1
 
-[node name="Gap4" type="Control" parent="Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.19
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Panel/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BestKills" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+[node name="BestKills" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.5
 theme_override_font_sizes/font_size = 40
 text = "BEST:"
 vertical_alignment = 1
 
-[node name="Gap" type="Control" parent="Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.27
-
 [node name="Buttons" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+offset_left = 20.0
+offset_top = 349.0
+offset_right = 728.0
+offset_bottom = 412.0
 size_flags_vertical = 8
 alignment = 1
 
@@ -107,11 +95,6 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 40
 text = "QUIT"
-
-[node name="Gap2" type="Control" parent="Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.41
 
 [connection signal="button_down" from="Panel/VBoxContainer/Buttons/RestartButton" to="." method="_on_restart_button_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_button_down"]
