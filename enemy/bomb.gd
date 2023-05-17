@@ -30,3 +30,9 @@ func make_bomb_radius_fade():
 	while $BombRadiusSprite.modulate.a >= 0:
 		$BombRadiusSprite.modulate.a -= 0.01 #Make it dependent on time
 		await get_tree().physics_frame
+
+func on_shot(random, direction, damage):
+	diffuse_bomb()
+
+func diffuse_bomb():
+	queue_free()

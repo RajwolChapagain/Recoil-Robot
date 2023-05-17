@@ -10,7 +10,7 @@ size = Vector2(58, 125)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvrnx"]
 radius = 579.34
 
-[node name="Bomb" type="RigidBody2D"]
+[node name="Bomb" type="RigidBody2D" groups=["shootable"]]
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_qb1r7")
