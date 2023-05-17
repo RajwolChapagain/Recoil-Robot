@@ -100,7 +100,8 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 	$FiveSecondDeathTimer.stop()
 
 func _on_five_second_death_timer_timeout():
-	on_death()
+	emit_signal("player_died")
+	queue_free()
 
 func on_death():
 	$Sprite2D.texture = robot_inactive
