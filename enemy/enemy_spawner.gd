@@ -27,6 +27,11 @@ func _on_spawn_rate_timer_timeout():
 func _on_rate_increment_timer_timeout():
 	spawn_rate += spawn_rate_increment
 	spawn_rate = clamp(spawn_rate, 0, MAX_ENEMY_PER_SECOND)
+	
+	if spawn_rate >= MAX_ENEMY_PER_SECOND:
+		stop_incrementing_rate()
+		$IncreaseLabel.text = "Max Spawnrate Reached!"
+		
 	$IncreaseLabel.visible = true
 	$IncreaseLabel/LabelAppearTimer.start()
 	set_timer_wait_time()
@@ -43,4 +48,7 @@ func _on_label_appear_timer_timeout():
 	
 func stop_spawning():
 	$SpawnRateTimer.stop()
+	stop_incrementing_rate()
+
+func stop_incrementing_rate():
 	$RateIncrementTimer.stop()
