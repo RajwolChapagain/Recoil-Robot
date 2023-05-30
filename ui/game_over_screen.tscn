@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3ar5wrs3qeri"]
+[gd_scene load_steps=4 format=3 uid="uid://d3ar5wrs3qeri"]
 
 [ext_resource type="Theme" uid="uid://dtpd6n45jfurp" path="res://ui/ui_theme.tres" id="1_neojc"]
 [ext_resource type="Script" path="res://ui/game_over_screen.gd" id="2_08730"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3w2v0"]
+bg_color = Color(0.12549, 0.47451, 0.772549, 1)
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -26,6 +29,7 @@ offset_right = 374.0
 offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3w2v0")
 
 [node name="VBoxContainer" type="Control" parent="Panel"]
 layout_mode = 1
@@ -75,24 +79,23 @@ vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
-offset_left = 20.0
-offset_top = 349.0
-offset_right = 728.0
-offset_bottom = 412.0
+offset_left = 93.0
+offset_top = 347.0
+offset_right = 655.0
+offset_bottom = 423.0
 size_flags_vertical = 8
+theme_override_constants/separation = 80
 alignment = 1
 
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer/Buttons"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "RESTART"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer/Buttons"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "QUIT"
 

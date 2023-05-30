@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0a2aay4a5yf0"]
+
+[ext_resource type="Theme" uid="uid://dtpd6n45jfurp" path="res://ui/ui_theme.tres" id="1_ksaso"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0.47451, 0.772549, 1)
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -333.0
+offset_right = 243.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Play" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ksaso")
+text = "PLAY"
+
+[node name="Tutorial" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ksaso")
+text = "TUTORIAL"
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ksaso")
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ksaso")
+text = "QUIT"
