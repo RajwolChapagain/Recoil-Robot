@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0pd8edvxg7hx"]
+[gd_scene load_steps=9 format=3 uid="uid://b0pd8edvxg7hx"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a1s6m"]
 [ext_resource type="PackedScene" uid="uid://brwr5mybbwdat" path="res://player/robot.tscn" id="1_r53qa"]
@@ -7,20 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://btbwk8f0x8wn3" path="res://enemy/enemy_spawner.tscn" id="6_i7ihu"]
 [ext_resource type="PackedScene" uid="uid://d3ar5wrs3qeri" path="res://ui/game_over_screen.tscn" id="6_opsha"]
 [ext_resource type="PackedScene" uid="uid://8qo5jwniwf4p" path="res://ui/hud.tscn" id="7_hdmw3"]
+[ext_resource type="Texture2D" uid="uid://cxrj0f6q3k14c" path="res://world/background.png" id="8_4mefl"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a1s6m")
 
-[node name="HUD" parent="." instance=ExtResource("7_hdmw3")]
-offset_left = -240.0
-offset_top = -135.0
-offset_right = 2160.0
-offset_bottom = 1215.0
-
-[node name="GameOverScreen" parent="." instance=ExtResource("6_opsha")]
-visible = false
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("8_4mefl")
 
 [node name="World" parent="." instance=ExtResource("2_qt0y4")]
 
@@ -36,3 +31,14 @@ position = Vector2(960, 0)
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 zoom = Vector2(0.8, 0.8)
+
+[node name="HUD" parent="." instance=ExtResource("7_hdmw3")]
+offset_left = -240.0
+offset_top = -135.0
+offset_right = 2160.0
+offset_bottom = 1215.0
+
+[node name="GameOverScreen" parent="." instance=ExtResource("6_opsha")]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
