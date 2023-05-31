@@ -1,14 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0a2aay4a5yf0"]
+[gd_scene load_steps=4 format=3 uid="uid://b0a2aay4a5yf0"]
 
+[ext_resource type="Script" path="res://ui/menu.gd" id="1_5oftd"]
 [ext_resource type="Theme" uid="uid://dtpd6n45jfurp" path="res://ui/ui_theme.tres" id="1_ksaso"]
+[ext_resource type="PackedScene" uid="uid://d05bkcw5xfat1" path="res://ui/settings.tscn" id="2_v2eia"]
 
-[node name="Control" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5oftd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -57,3 +60,9 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_ksaso")
 text = "QUIT"
+
+[node name="Settings" parent="." instance=ExtResource("2_v2eia")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_down" from="Buttons/Settings" to="." method="_on_settings_button_down"]
