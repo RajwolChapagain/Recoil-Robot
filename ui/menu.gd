@@ -3,6 +3,7 @@ extends Control
 var PLAY_SCENE = load("res://main.tscn")
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Buttons/Play.grab_focus()
 	$Settings/MainMenu.connect("button_down", on_settings_close)
 	
