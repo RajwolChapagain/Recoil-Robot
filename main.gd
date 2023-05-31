@@ -14,7 +14,7 @@ func _ready():
 	$Robot/Gun.connect("gun_fired", on_gun_fired)
 	time_started = Time.get_ticks_msec()
 	randomize()
-
+	
 func _physics_process(delta):
 	if !game_over:
 		update_hud_time()

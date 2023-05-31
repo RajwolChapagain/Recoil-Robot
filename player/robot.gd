@@ -19,7 +19,9 @@ signal player_died
 func _ready():
 	if $Gun != null:
 		distance_to_gun = $Gun.position.length()
-
+	
+	sensitivity = int(load_sensitivity())
+	
 func _physics_process(delta):
 	if can_shoot:
 		handle_gun_rotation(delta)
@@ -106,3 +108,13 @@ func _on_five_second_death_timer_timeout():
 func on_death():
 	$Sprite2D.texture = robot_inactive
 	emit_signal("player_died")
+
+func load_sensitivity():
+	if not FileAccess.file_exists("res://sensitivity.save"):
+		return 3
+		
+	var save_file = FileAccess.open("res://sensitivity.save", FileAccess.READ)
+	var json_string = save_file.get_line()
+	var sensitivity = JSON.parse_string(json_string)
+	
+	return sensitivity
