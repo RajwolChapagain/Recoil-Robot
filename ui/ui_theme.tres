@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dtpd6n45jfurp"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dtpd6n45jfurp"]
 
 [ext_resource type="FontFile" uid="uid://nwrb54wxfyoq" path="res://ui/fonts/satoshi/Satoshi-Regular.otf" id="1_bdtad"]
 [ext_resource type="FontFile" uid="uid://b4m1ytncouej5" path="res://ui/fonts/satoshi/Satoshi-Black.otf" id="1_yhbxt"]
@@ -10,9 +10,12 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(0, 0, 0, 0.619608)
-shadow_size = 5
-shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi2ny"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [resource]
 default_font_size = 16
@@ -26,4 +29,5 @@ Button/fonts/font = ExtResource("1_yhbxt")
 Button/styles/focus = ExtResource("2_i173w")
 Button/styles/hover = ExtResource("2_i173w")
 Button/styles/normal = SubResource("StyleBoxFlat_0usk5")
+Button/styles/pressed = SubResource("StyleBoxFlat_gi2ny")
 Label/fonts/font = ExtResource("1_bdtad")
