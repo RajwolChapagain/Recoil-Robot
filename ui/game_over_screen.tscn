@@ -106,7 +106,7 @@ text = "RESTART"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
-text = "QUIT"
+text = "MENU"
 
 [connection signal="button_down" from="Panel/VBoxContainer/Buttons/RestartButton" to="." method="_on_restart_button_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_button_down"]

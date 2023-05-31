@@ -67,3 +67,4 @@ layout_mode = 1
 
 [connection signal="button_down" from="Buttons/Play" to="." method="_on_play_button_down"]
 [connection signal="button_down" from="Buttons/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="Buttons/Quit" to="." method="_on_quit_button_down"]

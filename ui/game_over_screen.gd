@@ -1,5 +1,7 @@
 extends Control
 
+const MENU_SCENE = preload("res://ui/menu.tscn")
+
 func _on_restart_button_button_down():
 	get_tree().reload_current_scene()
 
@@ -36,4 +38,4 @@ func load_kills_and_time():
 
 
 func _on_quit_button_button_down():
-	get_tree().quit()
+	get_tree().change_scene_to_packed(MENU_SCENE)
