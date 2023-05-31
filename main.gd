@@ -6,7 +6,7 @@ var time_started
 var game_over = false
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Robot.connect("player_died", on_game_over)
 	$Robot/VisibleOnScreenNotifier2D.connect("screen_exited", on_player_exit_screen)
 	$Robot/VisibleOnScreenNotifier2D.connect("screen_entered", on_player_enter_screen)	
