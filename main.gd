@@ -20,7 +20,15 @@ func _physics_process(delta):
 		update_hud_time()
 		if !$Robot.can_move:
 			get_tree().call_group("kill_token", "move_to_position", $Robot.position)
-
+		if $Pointer.visible:
+			update_pointer_position_and_rotation()
+			
+func update_pointer_position_and_rotation():
+	$Pointer.look_at($Robot.position)
+	
+	$Pointer.position.x = clamp($Robot.position.x, -100, 1920)
+	$Pointer.position.y = clamp($Robot.position.y, 0, 1080)
+	
 func on_player_exit_screen():
 	$HUD/FiveSecondRuleLabel.visible = true	
 	
@@ -78,3 +86,10 @@ func shake_camera(max_x_displacement, max_y_displacement, duration):
 		await get_tree().physics_frame
 	
 	$Camera2D.offset = initial_camera_offset
+
+
+func _on_robot_player_entered_screen():
+	$Pointer.visible = false
+
+func _on_robot_player_exited_screen():
+	$Pointer.visible = true

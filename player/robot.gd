@@ -14,6 +14,8 @@ var can_move = true
 var can_jump = true
 var can_shoot = true
 
+signal player_exited_screen
+signal player_entered_screen
 signal player_died
 
 func _ready():
@@ -97,9 +99,11 @@ func check_if_fallen():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	$FiveSecondDeathTimer.start()
+	emit_signal("player_exited_screen")
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	$FiveSecondDeathTimer.stop()
+	emit_signal("player_entered_screen")
 
 func _on_five_second_death_timer_timeout():
 	emit_signal("player_died")
