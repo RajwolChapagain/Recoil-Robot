@@ -29,6 +29,8 @@ func update_pointer_position_and_rotation():
 	$Pointer.position.x = clamp($Robot.position.x, -100, 1920)
 	$Pointer.position.y = clamp($Robot.position.y, 0, 1080)
 	
+	$Pointer/Gun.global_rotation = $Robot/Gun.rotation
+	
 func on_player_exit_screen():
 	$HUD/FiveSecondRuleLabel.visible = true	
 	
