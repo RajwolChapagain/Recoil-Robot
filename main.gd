@@ -6,7 +6,8 @@ var time_started
 var game_over = false
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Robot.connect("player_died", on_game_over)
 	$Robot/VisibleOnScreenNotifier2D.connect("screen_exited", on_player_exit_screen)
 	$Robot/VisibleOnScreenNotifier2D.connect("screen_entered", on_player_enter_screen)	
@@ -20,8 +21,8 @@ func _physics_process(delta):
 		update_hud_time()
 		if !$Robot.can_move:
 			get_tree().call_group("kill_token", "move_to_position", $Robot.position)
-		if $Pointer.visible:
-			update_pointer_position_and_rotation()
+
+		update_pointer_position_and_rotation()
 			
 func update_pointer_position_and_rotation():
 	$Pointer.look_at($Robot.position)
@@ -95,3 +96,10 @@ func _on_robot_player_entered_screen():
 
 func _on_robot_player_exited_screen():
 	$Pointer.visible = true
+
+func _input(event):
+	if event.is_action_pressed("pause") and !game_over:
+		if !get_tree().paused:
+			get_tree().paused = true
+			$PausedPanel.visible = true
+			$PausedPanel/Panel/VBoxContainer/Buttons/RestartButton.grab_focus()

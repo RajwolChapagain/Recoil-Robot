@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsxyn6ahhfqu"]
+
+[ext_resource type="PackedScene" uid="uid://d3ar5wrs3qeri" path="res://ui/game_over_screen.tscn" id="1_ayiab"]
+
+[node name="PausedPanel" instance=ExtResource("1_ayiab")]
+
+[node name="GameOverText" parent="Panel/VBoxContainer" index="0"]
+text = "PAUSED"
+
+[node name="HBoxContainer" parent="Panel/VBoxContainer" index="1"]
+visible = false
