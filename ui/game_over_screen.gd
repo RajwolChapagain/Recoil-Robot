@@ -45,5 +45,5 @@ func _on_menu_button_button_down():
 func _input(event):
 	if event.is_action_pressed("pause") and name == "PausedPanel":
 		if get_tree().paused:
-			hide()
+			visible = false
 			get_tree().set_deferred("paused", false)

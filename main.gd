@@ -4,6 +4,7 @@ var kill_count = 0
 var time_started
 
 var game_over = false
+var enemy_death_particles = preload("res://enemy/enemy_death_particles.tscn")
 
 func _ready():
 	get_tree().paused = false
@@ -63,9 +64,14 @@ func on_game_over():
 		get_tree().call_group("enemy", "set_target", self)
 		$EnemySpawner.stop_spawning()
 
-func on_enemy_killed():
+func on_enemy_killed(bullet_direction, pos):
 	shake_camera(10, 10, 0.15)
 	Input.start_joy_vibration(0, 0.5, 1, 0.15)
+	var particles = enemy_death_particles.instantiate()
+	particles.global_position = pos
+	particles.process_material.direction = Vector3(bullet_direction.x, bullet_direction.y, 0)
+	add_child(particles)
+	particles.emitting = true
 	
 func on_enemy_deployed(enemy):
 	if !game_over:

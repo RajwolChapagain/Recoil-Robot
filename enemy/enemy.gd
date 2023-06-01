@@ -13,7 +13,7 @@ var green_eye_sprite = load("res://enemy/enemy_green_eye.png")
 var touched_player = false
 
 signal enemy_deployed(enemy)
-signal on_killed
+signal on_killed(bullet_direction, position)
 signal kill_token_spawned(kill_token)
 signal bomb_summoned(bomb)
 
@@ -24,7 +24,7 @@ func on_shot(impulse, direction, damage):
 	health_points -= damage
 	
 	if health_points <= 0:
-		emit_signal("on_killed")
+		on_killed.emit(direction, global_position)
 		
 		if !touched_player:
 			call_deferred("spawn_kill_token")
