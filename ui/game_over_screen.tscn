@@ -88,12 +88,12 @@ vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
-offset_left = 93.0
-offset_top = 347.0
-offset_right = 655.0
-offset_bottom = 423.0
+offset_left = 56.0
+offset_top = 331.0
+offset_right = 692.0
+offset_bottom = 407.0
 size_flags_vertical = 8
-theme_override_constants/separation = 80
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer/Buttons"]
@@ -102,11 +102,18 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "RESTART"
 
-[node name="QuitButton" type="Button" parent="Panel/VBoxContainer/Buttons"]
+[node name="MenuButton" type="Button" parent="Panel/VBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "MENU"
 
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
+
 [connection signal="button_down" from="Panel/VBoxContainer/Buttons/RestartButton" to="." method="_on_restart_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/Buttons/MenuButton" to="." method="_on_menu_button_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_button_down"]
