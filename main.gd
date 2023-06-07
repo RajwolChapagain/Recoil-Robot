@@ -17,6 +17,9 @@ func _ready():
 	time_started = Time.get_ticks_msec()
 	randomize()
 	
+	if not FileAccess.file_exists("res://high_scores.save"):
+		$Controls.visible = true
+	
 func _physics_process(delta):
 	if !game_over:
 		update_hud_time()

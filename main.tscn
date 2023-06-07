@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0pd8edvxg7hx"]
+[gd_scene load_steps=13 format=3 uid="uid://b0pd8edvxg7hx"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a1s6m"]
 [ext_resource type="PackedScene" uid="uid://brwr5mybbwdat" path="res://player/robot.tscn" id="1_r53qa"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://usfs3yj4gfeo" path="res://ui/pointer.tscn" id="9_3n7dn"]
 [ext_resource type="Texture2D" uid="uid://b7lhvaqx10pj6" path="res://gun/gun.png" id="10_nfvvo"]
 [ext_resource type="PackedScene" uid="uid://dsxyn6ahhfqu" path="res://ui/paused_panel.tscn" id="11_1hb72"]
+[ext_resource type="Texture2D" uid="uid://dmapum5t7luhh" path="res://ui/controls.png" id="12_i48fi"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a1s6m")
@@ -62,6 +63,13 @@ visible = false
 z_index = 5
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="Controls" type="TextureRect" parent="."]
+visible = false
+offset_top = -160.0
+offset_right = 1920.0
+offset_bottom = 920.0
+texture = ExtResource("12_i48fi")
 
 [connection signal="player_entered_screen" from="Robot" to="." method="_on_robot_player_entered_screen"]
 [connection signal="player_exited_screen" from="Robot" to="." method="_on_robot_player_exited_screen"]
