@@ -38,6 +38,7 @@ offset_right = 374.0
 offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(374, 226)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3w2v0")
 
 [node name="VBoxContainer" type="Control" parent="Panel"]

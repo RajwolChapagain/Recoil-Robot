@@ -7,6 +7,9 @@ func _on_restart_button_button_down():
 
 func display_game_over_panel(kills, time):
 	$Panel/VBoxContainer/Buttons/RestartButton.grab_focus()
+	var tween = get_tree().create_tween()
+	$Panel.scale = Vector2(0.2, 0.2)
+	tween.tween_property($Panel, "scale", Vector2(1, 1), 0.2)         
 	visible = true
 	$%Kills.text += " " + str(kills)
 	#$%Time.text += str(time)

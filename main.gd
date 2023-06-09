@@ -69,7 +69,7 @@ func on_game_over():
 		$EnemySpawner.stop_spawning()
 		
 		var tween = get_tree().create_tween()
-		tween.tween_property($DarkPanel, "modulate", Color(0, 0, 0, 1), 0.4)
+		tween.tween_property($DarkPanel, "modulate", Color.BLACK, 0.2)
 
 func on_enemy_killed(bullet_direction, pos):
 	shake_camera(10, 10, 0.15)
