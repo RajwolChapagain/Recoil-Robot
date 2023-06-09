@@ -67,6 +67,9 @@ func on_game_over():
 		$GameOverScreen.display_game_over_panel(kill_count, (Time.get_ticks_msec() - time_started) / 1000)
 		get_tree().call_group("enemy", "set_target", self)
 		$EnemySpawner.stop_spawning()
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property($DarkPanel, "modulate", Color(0, 0, 0, 1), 0.4)
 
 func on_enemy_killed(bullet_direction, pos):
 	shake_camera(10, 10, 0.15)
