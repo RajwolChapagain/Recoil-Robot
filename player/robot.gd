@@ -13,7 +13,10 @@ var robot_inactive= load("res://player/robot_inactive.png")
 var can_move = true
 var can_jump = true
 var can_shoot = true
+var bomb_scene = preload("res://enemy/bomb.tscn")
+var white_bomb_sprite = load("res://player/player_bomb.png")
 
+signal bomb_summoned
 signal player_exited_screen
 signal player_entered_screen
 signal player_died
@@ -95,6 +98,7 @@ func disable_shooting():
 func check_if_fallen():
 	if global_position.y > get_viewport_rect().size.y + 200:
 		on_death()
+		spawn_bomb()
 		queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -122,3 +126,17 @@ func load_sensitivity():
 	var sensitivity = JSON.parse_string(json_string)
 	
 	return sensitivity
+
+func spawn_bomb():
+	var bomb = bomb_scene.instantiate()
+	bomb.get_node("Sprite2D").texture = white_bomb_sprite
+	get_tree().get_root().get_node("Main").add_child(bomb)
+	bomb.global_position = pick_random_spawn_position()
+	bomb_summoned.emit(bomb)
+	
+func pick_random_spawn_position():
+	var x = randi_range(-240, 2160) #True for 0.8x zoom on Camera
+	var y = -200
+	
+	return Vector2(x, y)
+	

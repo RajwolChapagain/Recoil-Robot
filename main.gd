@@ -10,6 +10,7 @@ func _ready():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Robot.connect("player_died", on_game_over)
+	$Robot.connect("bomb_summoned", on_bomb_summoned)
 	$Robot/VisibleOnScreenNotifier2D.connect("screen_exited", on_player_exit_screen)
 	$Robot/VisibleOnScreenNotifier2D.connect("screen_entered", on_player_enter_screen)	
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
