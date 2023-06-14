@@ -52,6 +52,7 @@ func _integrate_forces(state):
 		if can_jump:
 			if is_grounded:
 				linear_velocity.y = -JUMP_SPEED
+				$AnimationPlayer.play("jump")
 	
 func _on_body_entered(body):
 	if "platform" in body.get_groups():
@@ -80,14 +81,14 @@ func handle_gun_rotation(physics_process_delta):
 func disable_jump():
 	can_jump = false
 	$Gun.recoil_force *= 1.8
-	$Sprite2D.texture = robot_without_pad
+	$Sprite2D/Jumpers.visible = false
 	$Gun.change_default_and_reload_sprite_to_larger_charge()
 	
 func disable_movement():
 	can_move = false
 	$Gun.fire_rate *= 2
 	$Gun.set_reload_time_using_bullets_per_second($Gun.fire_rate)
-	$Sprite2D.texture = robot_without_pad_and_wheels
+	$Sprite2D/Body.texture = robot_without_pad_and_wheels
 	$Gun.change_default_and_reload_sprite_to_shorter_charge()
 	$Gun.double_animation_speed()
 
