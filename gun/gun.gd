@@ -35,6 +35,7 @@ func fire_bullet():
 		emit_signal("gun_fired", position.normalized())
 		give_parent_recoil()
 		play_recoil_animation()
+		$AnimationPlayer.play("reload")
 
 func add_sibling_and_set_direction(bullet):
 	get_tree().get_root().add_child(bullet)
@@ -74,22 +75,31 @@ func change_default_and_reload_sprite_to_larger_charge():
 	normal_gun_sprite = large_charge_gun_sprite
 	gun_reloading_sprite = large_charge_gun_reloading_sprite
 	
-	if is_reloading:
-		$Sprite2D.texture = gun_reloading_sprite
-	else:
-		$Sprite2D.texture = normal_gun_sprite
+	$AnimationPlayer.play("increase_charge_height")
 
 func change_default_and_reload_sprite_to_shorter_charge():
 	normal_gun_sprite = short_charge_gun_sprite
 	gun_reloading_sprite = short_charge_gun_reloading_sprite
 	
+	$AnimationPlayer.play("decrease_charge_width")
+	
 	if is_reloading:
 		$Sprite2D.texture = gun_reloading_sprite
 	else:
 		$Sprite2D.texture = normal_gun_sprite
-
+		
 func play_recoil_animation():
 	$AnimationPlayer.play("recoil")
 	
 func double_animation_speed():
 	$AnimationPlayer.speed_scale = 2
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "increase_charge_height":
+		if is_reloading:
+			$Sprite2D.texture = gun_reloading_sprite
+		else:
+			$Sprite2D.texture = normal_gun_sprite
+
+		
