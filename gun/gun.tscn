@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mnoschwm5g3x"]
+[gd_scene load_steps=17 format=3 uid="uid://mnoschwm5g3x"]
 
 [ext_resource type="Texture2D" uid="uid://b7lhvaqx10pj6" path="res://gun/gun.png" id="1_d54yg"]
 [ext_resource type="Script" path="res://gun/gun.gd" id="2_y3tyo"]
@@ -26,34 +26,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/ProgressBar:value")
+tracks/1/path = NodePath("Sprite2D/ProgressBar:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [100.0]
+"values": [Vector2(146, 24)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/ProgressBar:size")
+tracks/2/path = NodePath("Sprite2D/ProgressBar:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(146, 24)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/ProgressBar:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -135,6 +123,19 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_vuwur"]
 resource_name = "reload"
 length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eehfh"]
+_data = {
+"RESET": SubResource("Animation_exoid"),
+"decrease_charge_width": SubResource("Animation_h43gm"),
+"increase_charge_height": SubResource("Animation_uxvv2"),
+"recoil": SubResource("Animation_8feba"),
+"reload": SubResource("Animation_vuwur")
+}
+
+[sub_resource type="Animation" id="Animation_xqls4"]
+resource_name = "reload"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -148,13 +149,87 @@ tracks/0/keys = {
 "values": [0.0, 100.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_eehfh"]
+[sub_resource type="Animation" id="Animation_toemt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j283n"]
 _data = {
-"RESET": SubResource("Animation_exoid"),
-"decrease_charge_width": SubResource("Animation_h43gm"),
-"increase_charge_height": SubResource("Animation_uxvv2"),
-"recoil": SubResource("Animation_8feba"),
-"reload": SubResource("Animation_vuwur")
+"RESET": SubResource("Animation_toemt"),
+"reload": SubResource("Animation_xqls4")
+}
+
+[sub_resource type="Animation" id="Animation_lysed"]
+resource_name = "increase_charge_height"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ProgressBar:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(146, 24), Vector2(146, 51)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/ProgressBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-111, -12), Vector2(-111, -26)]
+}
+
+[sub_resource type="Animation" id="Animation_3yxai"]
+resource_name = "decrease_charge_width"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ProgressBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-111, -26), Vector2(-35, -26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/ProgressBar:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(146, 51), Vector2(70, 51)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n3ble"]
+_data = {
+"decrease_charge_width": SubResource("Animation_3yxai"),
+"increase_charge_height": SubResource("Animation_lysed")
 }
 
 [node name="Gun" type="Node2D"]
@@ -191,5 +266,15 @@ libraries = {
 "": SubResource("AnimationLibrary_eehfh")
 }
 
+[node name="ReloadAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j283n")
+}
+
+[node name="ChargeSizeChangeAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n3ble")
+}
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="ChargeSizeChangeAnimationPlayer" to="." method="_on_charge_size_change_animation_player_animation_finished"]
