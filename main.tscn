@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0pd8edvxg7hx"]
+[gd_scene load_steps=15 format=3 uid="uid://b0pd8edvxg7hx"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a1s6m"]
 [ext_resource type="PackedScene" uid="uid://brwr5mybbwdat" path="res://player/robot.tscn" id="1_r53qa"]
@@ -13,6 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://dsxyn6ahhfqu" path="res://ui/paused_panel.tscn" id="11_1hb72"]
 [ext_resource type="Texture2D" uid="uid://dmapum5t7luhh" path="res://ui/controls.png" id="12_i48fi"]
 
+[sub_resource type="Curve" id="Curve_2gk8i"]
+_data = [Vector2(0, 0), 0.0, 0.114165, 0, 0, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_sjqln"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a1s6m")
 
@@ -25,6 +32,12 @@ texture = ExtResource("8_4mefl")
 
 [node name="Robot" parent="." instance=ExtResource("1_r53qa")]
 position = Vector2(708, 691)
+
+[node name="Trail" type="Line2D" parent="Robot"]
+scale = Vector2(1, 1)
+width = 60.0
+width_curve = SubResource("Curve_2gk8i")
+gradient = SubResource("Gradient_sjqln")
 
 [node name="Gun" parent="Robot" instance=ExtResource("2_8n84b")]
 position = Vector2(141, 0)

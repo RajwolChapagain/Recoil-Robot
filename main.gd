@@ -5,6 +5,7 @@ var time_started
 
 var game_over = false
 var enemy_death_particles = preload("res://enemy/enemy_death_particles.tscn")
+var gun_trail_length = 30
 
 func _ready():
 	get_tree().paused = false
@@ -28,6 +29,14 @@ func _physics_process(delta):
 			get_tree().call_group("kill_token", "move_to_position", $Robot.position)
 
 		update_pointer_position_and_rotation()
+		update_gun_trail_points()
+
+func _process(delta):
+	if $Robot/Trail.get_point_count() > gun_trail_length:
+		$Robot/Trail.remove_point(0)
+	
+func update_gun_trail_points():
+	$Robot/Trail.add_point($Robot/Gun.position)
 			
 func update_pointer_position_and_rotation():
 	$Pointer.look_at($Robot.position)

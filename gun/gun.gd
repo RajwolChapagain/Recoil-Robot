@@ -16,6 +16,7 @@ var large_charge_gun_sprite = load("res://gun/gun_larger_charge.png")
 var large_charge_gun_reloading_sprite = load("res://gun/gun_larger_charge_reloading.png")
 var short_charge_gun_sprite = load("res://gun/gun_shorter_charge.png")
 var short_charge_gun_reloading_sprite = load("res://gun/gun_shorter_charge_reloading.png")
+var trail_length = 200
 
 signal gun_fired(bullet_direction)
 
@@ -23,7 +24,7 @@ func _ready():
 	gun_sprite_offset_x = $Sprite2D.position.x
 	angle_between_bullets = max_bullet_spread_angle / bullets_per_shot
 	set_reload_time_using_bullets_per_second(fire_rate)
-
+	
 func fire_bullet():
 	if not is_reloading:
 		is_reloading = true
