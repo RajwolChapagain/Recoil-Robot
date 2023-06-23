@@ -27,15 +27,16 @@ func _ready():
 		$Controls.visible = true
 
 func _process(delta):
-	if ($Robot/Trail.get_point_count() - 1) * distance_between_gun_trail_points > max_trail_length:
-		$Robot/Trail.remove_point(0)
-		
-	if time_since_last_trail_point_removed >= interval_between_point_removal:
-		if $Robot/Trail.get_point_count() != 0:
+	if !game_over:
+		if ($Robot/Trail.get_point_count() - 1) * distance_between_gun_trail_points > max_trail_length:
 			$Robot/Trail.remove_point(0)
-			time_since_last_trail_point_removed = 0
-	else:
-		time_since_last_trail_point_removed += delta
+			
+		if time_since_last_trail_point_removed >= interval_between_point_removal:
+			if $Robot/Trail.get_point_count() != 0:
+				$Robot/Trail.remove_point(0)
+				time_since_last_trail_point_removed = 0
+		else:
+			time_since_last_trail_point_removed += delta
 	
 func _physics_process(delta):
 	if !game_over:

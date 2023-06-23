@@ -34,6 +34,7 @@ texture = ExtResource("8_4mefl")
 position = Vector2(708, 691)
 
 [node name="Trail" type="Line2D" parent="Robot"]
+points = PackedVector2Array(317, -201)
 width = 60.0
 width_curve = SubResource("Curve_2gk8i")
 gradient = SubResource("Gradient_sjqln")
