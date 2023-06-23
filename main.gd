@@ -5,7 +5,11 @@ var time_started
 
 var game_over = false
 var enemy_death_particles = preload("res://enemy/enemy_death_particles.tscn")
-var gun_trail_length = 30
+var max_trail_length = 200
+var distance_between_gun_trail_points = 20
+var trail_offset = 20
+var time_since_last_trail_point_removed = 0
+var interval_between_point_removal = 0.021
 
 func _ready():
 	get_tree().paused = false
@@ -21,6 +25,14 @@ func _ready():
 	
 	if not FileAccess.file_exists("res://high_scores.save"):
 		$Controls.visible = true
+
+func _process(delta):
+	if time_since_last_trail_point_removed >= interval_between_point_removal:
+		if $Robot/Trail.get_point_count() != 0:
+			$Robot/Trail.remove_point(0)
+			time_since_last_trail_point_removed = 0
+	else:
+		time_since_last_trail_point_removed += delta
 	
 func _physics_process(delta):
 	if !game_over:
@@ -30,13 +42,15 @@ func _physics_process(delta):
 
 		update_pointer_position_and_rotation()
 		update_gun_trail_points()
-
-func _process(delta):
-	if $Robot/Trail.get_point_count() > gun_trail_length:
-		$Robot/Trail.remove_point(0)
-	
+		
 func update_gun_trail_points():
-	$Robot/Trail.add_point($Robot/Gun.position)
+	if $Robot/Trail.get_point_count() > 1:
+		if $Robot/Gun.position.distance_to($Robot/Trail.get_point_position($Robot/Trail.get_point_count() - 1)) > distance_between_gun_trail_points:
+			var dir = $Robot.global_position.direction_to($Robot/Gun.global_position)
+			$Robot/Trail.add_point($Robot/Gun.position - dir * trail_offset)
+	else:
+		$Robot/Trail.add_point($Robot/Gun.position)
+		$Robot/Trail/PointDeleteTimer.start()
 			
 func update_pointer_position_and_rotation():
 	$Pointer.look_at($Robot.position)
@@ -125,3 +139,9 @@ func _input(event):
 			get_tree().paused = true
 			$PausedPanel.visible = true
 			$PausedPanel/Panel/VBoxContainer/Buttons/RestartButton.grab_focus()
+
+
+func _on_point_delete_timer_timeout():
+#	if $Robot/Trail.get_point_count() != 0:
+#		$Robot/Trail.remove_point(0)
+	pass
