@@ -38,9 +38,6 @@ width = 60.0
 width_curve = SubResource("Curve_2gk8i")
 gradient = SubResource("Gradient_sjqln")
 
-[node name="PointDeleteTimer" type="Timer" parent="Robot/Trail"]
-wait_time = 0.025
-
 [node name="Gun" parent="Robot" instance=ExtResource("2_8n84b")]
 position = Vector2(141, 0)
 
@@ -107,6 +104,5 @@ grow_vertical = 2
 
 [connection signal="player_entered_screen" from="Robot" to="." method="_on_robot_player_entered_screen"]
 [connection signal="player_exited_screen" from="Robot" to="." method="_on_robot_player_exited_screen"]
-[connection signal="timeout" from="Robot/Trail/PointDeleteTimer" to="." method="_on_point_delete_timer_timeout"]
 
 [editable path="Robot/Gun"]
