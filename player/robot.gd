@@ -91,6 +91,7 @@ func disable_movement():
 	$Sprite2D/Body.texture = robot_without_pad_and_wheels
 	$Gun.change_default_and_reload_sprite_to_shorter_charge()
 	$Gun.double_animation_speed()
+	physics_material_override.friction = 1
 
 func disable_shooting():
 	can_shoot = false

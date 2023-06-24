@@ -42,12 +42,6 @@ gradient = SubResource("Gradient_sjqln")
 [node name="Gun" parent="Robot" instance=ExtResource("2_8n84b")]
 position = Vector2(141, 0)
 
-[node name="ProgressBar" parent="Robot/Gun/Sprite2D" index="0"]
-offset_left = -361.0
-offset_top = -262.0
-offset_right = -215.0
-offset_bottom = -238.0
-
 [node name="EnemySpawner" parent="." instance=ExtResource("6_i7ihu")]
 position = Vector2(960, 0)
 

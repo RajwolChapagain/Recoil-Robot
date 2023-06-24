@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://brwr5mybbwdat"]
+[gd_scene load_steps=9 format=3 uid="uid://brwr5mybbwdat"]
 
 [ext_resource type="Script" path="res://player/robot.gd" id="1_1wear"]
 [ext_resource type="Texture2D" uid="uid://dmiq5vj84pgu2" path="res://player/rod_and_pad.png" id="2_a6l25"]
 [ext_resource type="Texture2D" uid="uid://bc63loqncr8e7" path="res://player/everything_except_rod_and_pad.png" id="3_hpm8n"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhntc"]
+friction = 0.2
+rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71nt1"]
 size = Vector2(128, 127)
@@ -46,6 +50,7 @@ _data = {
 
 [node name="Robot" type="RigidBody2D"]
 z_index = 1
+physics_material_override = SubResource("PhysicsMaterial_nhntc")
 max_contacts_reported = 1
 contact_monitor = true
 can_sleep = false
