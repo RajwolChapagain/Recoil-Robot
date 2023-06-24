@@ -37,7 +37,7 @@ func fire_bullet():
 		give_parent_recoil()
 		play_recoil_animation()
 		$ReloadAnimationPlayer.play("reload")
-		$AudioStreamPlayer2D.play()
+		$AudioStreamPlayer.play()
 
 func add_sibling_and_set_direction(bullet):
 	get_tree().get_root().add_child(bullet)

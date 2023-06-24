@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://brwr5mybbwdat"]
+[gd_scene load_steps=10 format=3 uid="uid://brwr5mybbwdat"]
 
 [ext_resource type="Script" path="res://player/robot.gd" id="1_1wear"]
 [ext_resource type="Texture2D" uid="uid://dmiq5vj84pgu2" path="res://player/rod_and_pad.png" id="2_a6l25"]
 [ext_resource type="Texture2D" uid="uid://bc63loqncr8e7" path="res://player/everything_except_rod_and_pad.png" id="3_hpm8n"]
+[ext_resource type="AudioStream" uid="uid://ovr7dj5arq7p" path="res://player/jump.wav" id="4_ha5if"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhntc"]
 friction = 0.2
@@ -82,6 +83,9 @@ scale = Vector2(6.4, 6.3)
 libraries = {
 "": SubResource("AnimationLibrary_cx2rb")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ha5if")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

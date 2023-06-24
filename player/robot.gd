@@ -53,6 +53,7 @@ func _integrate_forces(state):
 			if is_grounded:
 				linear_velocity.y = -JUMP_SPEED
 				$AnimationPlayer.play("jump")
+				$AudioStreamPlayer.play()
 	
 func _on_body_entered(body):
 	if "platform" in body.get_groups():
