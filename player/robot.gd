@@ -7,6 +7,10 @@ var distance_to_gun
 var increment_angle_per_second_degrees = 100
 var gun_rotation_angle = 0
 var sensitivity = 3
+var gun_acceleration = 0.04
+var gun_deceleration = 0.04
+var gun_velocity_scale_clockwise = 0
+var gun_velocity_scale_counter_clockwise = 0
 var robot_without_pad = load("res://player/robot_without_pad.png")
 var robot_without_pad_and_wheels = load("res://player/robot_without_pad_and_wheels.png")
 var robot_inactive= load("res://player/robot_inactive.png")
@@ -65,10 +69,23 @@ func _on_body_exited(body):
 
 func handle_gun_rotation(physics_process_delta):
 	if Input.is_action_pressed("rotate_gun_clockwise"):
-		gun_rotation_angle += increment_angle_per_second_degrees * physics_process_delta * sensitivity
-	if Input.is_action_pressed("rotate_gun_counter_clockwise"):
-		gun_rotation_angle -= increment_angle_per_second_degrees * physics_process_delta * sensitivity
+		gun_velocity_scale_clockwise += gun_acceleration
+	else:
+		gun_velocity_scale_clockwise -= gun_deceleration
 	
+	if Input.is_action_pressed("rotate_gun_counter_clockwise"):
+		gun_velocity_scale_counter_clockwise += gun_acceleration
+	else:
+		gun_velocity_scale_counter_clockwise -= gun_deceleration
+		
+	gun_velocity_scale_clockwise = clamp(gun_velocity_scale_clockwise, 0, 1)
+	gun_velocity_scale_counter_clockwise = clamp(gun_velocity_scale_counter_clockwise, 0, 1)
+	
+	if gun_velocity_scale_clockwise > 0:
+		gun_rotation_angle += increment_angle_per_second_degrees * physics_process_delta * sensitivity * gun_velocity_scale_clockwise
+	if gun_velocity_scale_counter_clockwise > 0:
+		gun_rotation_angle -= increment_angle_per_second_degrees * physics_process_delta * sensitivity * gun_velocity_scale_counter_clockwise
+				
 	if $Gun.position.x < 0:
 		$Gun/Sprite2D.flip_v = true
 	else:
