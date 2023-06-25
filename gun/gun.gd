@@ -38,6 +38,7 @@ func fire_bullet():
 		play_recoil_animation()
 		$ReloadAnimationPlayer.play("reload")
 		$AudioStreamPlayer.play()
+		$Sprite2D/ShootParticles.emitting = true
 
 func add_sibling_and_set_direction(bullet):
 	get_tree().get_root().add_child(bullet)

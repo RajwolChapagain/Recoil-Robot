@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://mnoschwm5g3x"]
+[gd_scene load_steps=24 format=3 uid="uid://mnoschwm5g3x"]
 
 [ext_resource type="Texture2D" uid="uid://b7lhvaqx10pj6" path="res://gun/gun.png" id="1_d54yg"]
 [ext_resource type="Script" path="res://gun/gun.gd" id="2_y3tyo"]
@@ -9,6 +9,36 @@ bg_color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_884h3"]
 bg_color = Color(0.333333, 0.894118, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_0au5b"]
+offsets = PackedFloat32Array(0, 0.616114)
+colors = PackedColorArray(1, 1, 1, 1, 0.333333, 0.894118, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jeqsx"]
+gradient = SubResource("Gradient_0au5b")
+
+[sub_resource type="Curve" id="Curve_p7jip"]
+_data = [Vector2(0, 1), 0.0, 1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3totp"]
+curve = SubResource("Curve_p7jip")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lsytf"]
+emission_shape = 3
+emission_box_extents = Vector3(100, 100, 1)
+particle_flag_disable_z = true
+spread = 90.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1500.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_3totp")
+color_ramp = SubResource("GradientTexture1D_jeqsx")
+turbulence_enabled = true
 
 [sub_resource type="Animation" id="Animation_exoid"]
 length = 0.001
@@ -263,10 +293,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -111.0
-offset_top = -12.0
-offset_right = 35.0
-offset_bottom = 12.0
+offset_left = -361.0
+offset_top = -262.0
+offset_right = -215.0
+offset_bottom = -238.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_81ybk")
@@ -274,6 +304,16 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_884h3")
 value = 100.0
 rounded = true
 show_percentage = false
+
+[node name="ShootParticles" type="GPUParticles2D" parent="Sprite2D"]
+position = Vector2(122.641, 2.35849)
+scale = Vector2(0.307094, 0.307094)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_lsytf")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
 
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true

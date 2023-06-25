@@ -105,6 +105,7 @@ func on_enemy_killed(bullet_direction, pos):
 	particles.process_material.direction = Vector3(bullet_direction.x, bullet_direction.y, 0)
 	add_child(particles)
 	particles.emitting = true
+	$EnemyKilledSound.play()
 	
 func on_enemy_deployed(enemy):
 	if !game_over:
