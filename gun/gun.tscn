@@ -306,6 +306,7 @@ rounded = true
 show_percentage = false
 
 [node name="ShootParticles" type="GPUParticles2D" parent="Sprite2D"]
+visible = false
 position = Vector2(122.641, 2.35849)
 scale = Vector2(0.307094, 0.307094)
 emitting = false

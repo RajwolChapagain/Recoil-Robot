@@ -8,7 +8,7 @@ var increment_angle_per_second_degrees = 100
 var gun_rotation_angle = 0
 var sensitivity = 3
 var gun_acceleration = 0.04
-var gun_deceleration = 0.04
+var gun_deceleration = 0.1
 var gun_velocity_scale_clockwise = 0
 var gun_velocity_scale_counter_clockwise = 0
 var robot_without_pad = load("res://player/robot_without_pad.png")
@@ -30,6 +30,13 @@ func _ready():
 		distance_to_gun = $Gun.position.length()
 	
 	sensitivity = int(load_sensitivity())
+	
+	if !load_acceleration_preference():
+		gun_acceleration = 1
+		gun_deceleration = 1
+	else:
+		gun_acceleration = 0.04
+		gun_deceleration = 0.1
 	
 func _physics_process(delta):
 	if can_shoot:
@@ -139,7 +146,7 @@ func on_death():
 
 func load_sensitivity():
 	if not FileAccess.file_exists("res://sensitivity.save"):
-		return 3
+		return 5
 		
 	var save_file = FileAccess.open("res://sensitivity.save", FileAccess.READ)
 	var json_string = save_file.get_line()
@@ -147,6 +154,16 @@ func load_sensitivity():
 	
 	return sensitivity
 
+func load_acceleration_preference():
+	if not FileAccess.file_exists("res://acceleration_preference.save"):
+		return true
+		
+	var save_file = FileAccess.open("res://acceleration_preference.save", FileAccess.READ)
+	var json_string = save_file.get_line()
+	var acceleration_preference = JSON.parse_string(json_string)
+	
+	return acceleration_preference
+	
 func spawn_bomb():
 	var bomb = bomb_scene.instantiate()
 	bomb.get_node("Sprite2D").texture = white_bomb_sprite
@@ -160,3 +177,4 @@ func pick_random_spawn_position():
 	
 	return Vector2(x, y)
 	
+
