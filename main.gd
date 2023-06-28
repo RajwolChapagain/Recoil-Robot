@@ -20,6 +20,7 @@ func _ready():
 	$Robot/VisibleOnScreenNotifier2D.connect("screen_entered", on_player_enter_screen)	
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
 	$Robot/Gun.connect("gun_fired", on_gun_fired)
+	$Robot/Gun/Sprite2D/ProgressBar.position = Vector2(-111, -12)
 	time_started = Time.get_ticks_msec()
 	randomize()
 	
