@@ -7,7 +7,7 @@ var distance_to_gun
 var increment_angle_per_second_degrees = 100
 var gun_rotation_angle = 0
 var sensitivity = 3
-var gun_acceleration = 0.04
+var gun_acceleration = 0.1
 var gun_deceleration = 0.1
 var gun_velocity_scale_clockwise = 0
 var gun_velocity_scale_counter_clockwise = 0
@@ -35,7 +35,7 @@ func _ready():
 		gun_acceleration = 1
 		gun_deceleration = 1
 	else:
-		gun_acceleration = 0.04
+		gun_acceleration = 0.1
 		gun_deceleration = 0.1
 	
 func _physics_process(delta):
