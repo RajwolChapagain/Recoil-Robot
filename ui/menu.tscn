@@ -41,6 +41,8 @@ theme_override_constants/separation = 30
 [node name="Play" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Quit")
 theme = ExtResource("1_ksaso")
 text = "PLAY"
 
@@ -54,12 +56,16 @@ text = "TUTORIAL"
 [node name="Settings" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Play")
 theme = ExtResource("1_ksaso")
 text = "SETTINGS"
 
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Settings")
 theme = ExtResource("1_ksaso")
 text = "QUIT"
 
