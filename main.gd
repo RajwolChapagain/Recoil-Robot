@@ -117,6 +117,7 @@ func on_kill_token_spawned(kill_token):
 func on_kill_token_collected():
 	kill_count += 1
 	$HUD.set_kill_count_label(kill_count)
+	$KillTokenCollected.play()
 
 func shake_camera(max_x_displacement, max_y_displacement, duration):
 	var initial_camera_offset = Vector2(960, 540)
