@@ -39,6 +39,7 @@ func fire_bullet():
 		$ReloadAnimationPlayer.play("reload")
 		$AudioStreamPlayer.play()
 		$Sprite2D/ShootParticles.emitting = true
+		Input.start_joy_vibration(0, 1, 1, 0.15)
 
 func add_sibling_and_set_direction(bullet):
 	get_tree().get_root().add_child(bullet)

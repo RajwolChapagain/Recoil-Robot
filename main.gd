@@ -100,7 +100,6 @@ func on_game_over():
 
 func on_enemy_killed(bullet_direction, pos):
 	shake_camera(10, 10, 0.15)
-	Input.start_joy_vibration(0, 0.5, 1, 0.15)
 	var particles = enemy_death_particles.instantiate()
 	particles.global_position = pos
 	particles.process_material.direction = Vector3(bullet_direction.x, bullet_direction.y, 0)
