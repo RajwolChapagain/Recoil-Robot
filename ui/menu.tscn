@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0a2aay4a5yf0"]
+[gd_scene load_steps=5 format=3 uid="uid://b0a2aay4a5yf0"]
 
 [ext_resource type="Script" path="res://ui/menu.gd" id="1_5oftd"]
 [ext_resource type="Theme" uid="uid://dtpd6n45jfurp" path="res://ui/ui_theme.tres" id="1_ksaso"]
 [ext_resource type="PackedScene" uid="uid://d05bkcw5xfat1" path="res://ui/settings.tscn" id="2_v2eia"]
+[ext_resource type="Texture2D" uid="uid://d1fcrclj0iysb" path="res://ui/title.png" id="4_nfxl2"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -31,9 +32,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -243.0
-offset_top = -261.0
+offset_top = -205.0
 offset_right = 243.0
-offset_bottom = 261.0
+offset_bottom = 317.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -68,6 +69,18 @@ focus_next = NodePath("../Play")
 focus_previous = NodePath("../Settings")
 theme = ExtResource("1_ksaso")
 text = "QUIT"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -454.0
+offset_top = 80.0
+offset_right = 454.0
+offset_bottom = 240.0
+grow_horizontal = 2
+texture = ExtResource("4_nfxl2")
 
 [node name="Settings" parent="." instance=ExtResource("2_v2eia")]
 visible = false
