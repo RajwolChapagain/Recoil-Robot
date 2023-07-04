@@ -97,6 +97,7 @@ func on_game_over():
 		
 		var tween = get_tree().create_tween()
 		tween.tween_property($DarkPanel, "modulate", Color.BLACK, 0.2)
+		tween.parallel().tween_property($Music, "volume_db", -80, 0.2)
 
 func on_enemy_killed(bullet_direction, pos):
 	shake_camera(10, 10, 0.15)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0pd8edvxg7hx"]
+[gd_scene load_steps=18 format=3 uid="uid://b0pd8edvxg7hx"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a1s6m"]
 [ext_resource type="PackedScene" uid="uid://brwr5mybbwdat" path="res://player/robot.tscn" id="1_r53qa"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b7lhvaqx10pj6" path="res://gun/gun.png" id="10_nfvvo"]
 [ext_resource type="PackedScene" uid="uid://dsxyn6ahhfqu" path="res://ui/paused_panel.tscn" id="11_1hb72"]
 [ext_resource type="Texture2D" uid="uid://dmapum5t7luhh" path="res://ui/controls.png" id="12_i48fi"]
+[ext_resource type="AudioStream" uid="uid://dcqd8qg3sleig" path="res://world/music.mp3" id="15_v8hd7"]
 
 [sub_resource type="Curve" id="Curve_2gk8i"]
 _data = [Vector2(0, 0), 0.0, 0.114165, 0, 0, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -104,6 +105,11 @@ offset_right = 2212.0
 offset_bottom = 1244.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_v8hd7")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="player_entered_screen" from="Robot" to="." method="_on_robot_player_entered_screen"]
 [connection signal="player_exited_screen" from="Robot" to="." method="_on_robot_player_exited_screen"]
