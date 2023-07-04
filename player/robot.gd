@@ -26,6 +26,7 @@ signal player_entered_screen
 signal player_died
 
 func _ready():
+	physics_material_override.friction = 0.2	
 	if $Gun != null:
 		distance_to_gun = $Gun.position.length()
 	
