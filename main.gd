@@ -22,6 +22,7 @@ func _ready():
 	$Robot/Gun.connect("gun_fired", on_gun_fired)
 	$Robot/Gun/Sprite2D/ProgressBar.position = Vector2(-111, -12)
 	$Music.volume_db = int(load_music_volume())
+	
 	time_started = Time.get_ticks_msec()
 	randomize()
 	

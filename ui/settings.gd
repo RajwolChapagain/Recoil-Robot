@@ -63,3 +63,8 @@ func load_music_volume():
 	var music_volume = JSON.parse_string(json_string)
 	
 	return music_volume
+
+func _on_reset_button_down():
+	$VBoxContainer/HBoxContainer/HSlider.value = 5
+	$VBoxContainer/HBoxContainer3/HSlider.value = -20
+	$CheckButton.button_pressed = true

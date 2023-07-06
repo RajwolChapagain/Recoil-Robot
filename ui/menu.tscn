@@ -155,7 +155,7 @@ layout_mode = 2
 theme = ExtResource("1_ksaso")
 theme_override_fonts/font = ExtResource("5_dyaex")
 theme_override_font_sizes/font_size = 80
-text = "Dr. Cameron Kunzelman"
+text = "Dr. CMRN KNZLMN"
 horizontal_alignment = 1
 
 [node name="MainMenu" type="Button" parent="CreditsPanel"]
