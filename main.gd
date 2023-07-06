@@ -21,6 +21,7 @@ func _ready():
 	$EnemySpawner.connect("enemy_spawned", on_enemy_spawned)
 	$Robot/Gun.connect("gun_fired", on_gun_fired)
 	$Robot/Gun/Sprite2D/ProgressBar.position = Vector2(-111, -12)
+	$Music.volume_db = int(load_music_volume())
 	time_started = Time.get_ticks_msec()
 	randomize()
 	
@@ -145,3 +146,13 @@ func _input(event):
 			get_tree().paused = true
 			$PausedPanel.visible = true
 			$PausedPanel/Panel/VBoxContainer/Buttons/RestartButton.grab_focus()
+
+func load_music_volume():
+	if not FileAccess.file_exists("res://music_volume.save"):
+		return -20
+		
+	var save_file = FileAccess.open("res://music_volume.save", FileAccess.READ)
+	var json_string = save_file.get_line()
+	var music_volume = JSON.parse_string(json_string)
+	
+	return music_volume

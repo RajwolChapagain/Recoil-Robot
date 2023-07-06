@@ -74,6 +74,35 @@ text = "Gun Acceleration:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ihvvi")
+theme_override_font_sizes/font_size = 50
+text = "Music:"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.7
+focus_neighbor_top = NodePath("../../../CheckButton")
+focus_neighbor_bottom = NodePath("../../../MainMenu")
+focus_next = NodePath("../../../MainMenu")
+focus_previous = NodePath("../../../CheckButton")
+theme = ExtResource("1_ihvvi")
+min_value = -80.0
+max_value = -10.0
+step = 10.0
+value = -20.0
+tick_count = 8
+ticks_on_borders = true
+
 [node name="MainMenu" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -87,9 +116,9 @@ offset_right = -72.0
 offset_bottom = -49.0
 grow_horizontal = 0
 grow_vertical = 0
-focus_neighbor_top = NodePath("../CheckButton")
+focus_neighbor_top = NodePath("../VBoxContainer/HBoxContainer3/HSlider")
 focus_next = NodePath("../VBoxContainer/HBoxContainer/HSlider")
-focus_previous = NodePath("../CheckButton")
+focus_previous = NodePath("../VBoxContainer/HBoxContainer3/HSlider")
 theme = ExtResource("1_ihvvi")
 text = "MAIN MENU"
 
@@ -101,15 +130,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 152.0
-offset_top = 14.0
+offset_top = -18.0
 offset_right = 196.0
-offset_bottom = 38.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 focus_neighbor_top = NodePath("../VBoxContainer/HBoxContainer/HSlider")
-focus_neighbor_bottom = NodePath("../MainMenu")
-focus_next = NodePath("../MainMenu")
+focus_neighbor_bottom = NodePath("../VBoxContainer/HBoxContainer3/HSlider")
+focus_next = NodePath("../VBoxContainer/HBoxContainer3/HSlider")
 focus_previous = NodePath("../VBoxContainer/HBoxContainer/HSlider")
 button_pressed = true
 flat = true
