@@ -18,3 +18,15 @@ func on_settings_close():
 
 func _on_quit_button_down():
 	get_tree().quit()
+
+func _on_main_menu_button_down():
+	$CreditsPanel.visible = false
+	$Buttons/Play.grab_focus()
+
+func _on_credits_button_down():
+	$CreditsPanel.visible = true
+
+
+func _on_credits_panel_visibility_changed():
+	if visible:
+		$CreditsPanel/MainMenu.grab_focus()

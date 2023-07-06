@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0a2aay4a5yf0"]
+[gd_scene load_steps=7 format=3 uid="uid://b0a2aay4a5yf0"]
 
 [ext_resource type="Script" path="res://ui/menu.gd" id="1_5oftd"]
 [ext_resource type="Theme" uid="uid://dtpd6n45jfurp" path="res://ui/ui_theme.tres" id="1_ksaso"]
 [ext_resource type="PackedScene" uid="uid://d05bkcw5xfat1" path="res://ui/settings.tscn" id="2_v2eia"]
 [ext_resource type="Texture2D" uid="uid://d1fcrclj0iysb" path="res://ui/title.png" id="4_nfxl2"]
+[ext_resource type="FontFile" uid="uid://cucf2wjuv6g1t" path="res://ui/fonts/satoshi/Satoshi-Bold.otf" id="5_dyaex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ttqr"]
+bg_color = Color(0.12549, 0.47451, 0.772549, 1)
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -47,26 +51,27 @@ focus_previous = NodePath("../Quit")
 theme = ExtResource("1_ksaso")
 text = "PLAY"
 
-[node name="Tutorial" type="Button" parent="Buttons"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("1_ksaso")
-text = "TUTORIAL"
-
 [node name="Settings" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_next = NodePath("../Quit")
+focus_next = NodePath("../Credits")
 focus_previous = NodePath("../Play")
 theme = ExtResource("1_ksaso")
 text = "SETTINGS"
+
+[node name="Credits" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Settings")
+theme = ExtResource("1_ksaso")
+text = "CREDITS"
 
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_next = NodePath("../Play")
-focus_previous = NodePath("../Settings")
+focus_previous = NodePath("../Credits")
 theme = ExtResource("1_ksaso")
 text = "QUIT"
 
@@ -86,6 +91,95 @@ texture = ExtResource("4_nfxl2")
 visible = false
 layout_mode = 1
 
+[node name="CreditsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ttqr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -628.0
+offset_top = 240.0
+offset_right = 628.0
+offset_bottom = 500.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ksaso")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Designed And Developed By"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ksaso")
+theme_override_fonts/font = ExtResource("5_dyaex")
+theme_override_font_sizes/font_size = 80
+text = "CupidOfDeath"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -628.0
+offset_top = -540.0
+offset_right = 628.0
+offset_bottom = -280.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CreditsPanel/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_ksaso")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Music By"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsPanel/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_ksaso")
+theme_override_fonts/font = ExtResource("5_dyaex")
+theme_override_font_sizes/font_size = 80
+text = "Dr. Cameron Kunzelman"
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Button" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -128.0
+offset_right = -72.0
+offset_bottom = -49.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_neighbor_top = NodePath("../CheckButton")
+focus_next = NodePath("../VBoxContainer/HBoxContainer/HSlider")
+focus_previous = NodePath("../CheckButton")
+theme = ExtResource("1_ksaso")
+text = "MAIN MENU"
+
 [connection signal="button_down" from="Buttons/Play" to="." method="_on_play_button_down"]
 [connection signal="button_down" from="Buttons/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="Buttons/Credits" to="." method="_on_credits_button_down"]
 [connection signal="button_down" from="Buttons/Quit" to="." method="_on_quit_button_down"]
+[connection signal="visibility_changed" from="CreditsPanel" to="." method="_on_credits_panel_visibility_changed"]
+[connection signal="button_down" from="CreditsPanel/MainMenu" to="." method="_on_main_menu_button_down"]
