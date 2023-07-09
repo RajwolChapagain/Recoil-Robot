@@ -54,12 +54,13 @@ text = "PLAY"
 [node name="Settings" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_next = NodePath("../Credits")
+focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Play")
 theme = ExtResource("1_ksaso")
 text = "SETTINGS"
 
 [node name="Credits" type="Button" parent="Buttons"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 focus_next = NodePath("../Quit")
@@ -71,7 +72,7 @@ text = "CREDITS"
 layout_mode = 2
 size_flags_vertical = 3
 focus_next = NodePath("../Play")
-focus_previous = NodePath("../Credits")
+focus_previous = NodePath("../Settings")
 theme = ExtResource("1_ksaso")
 text = "QUIT"
 
